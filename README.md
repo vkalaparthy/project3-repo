@@ -1,2 +1,2 @@
-# project3-repo
-React Project 3
+# reactreadinglist-auth
+React Reading List App with simple Auth
