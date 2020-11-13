@@ -3,9 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
-import Books from './pages/Books';
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
+import Dashboard from './pages/Dashboard';
+// import Books from './pages/Books';
+// import Detail from "./pages/Detail";
+// import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   useEffect(() => {
     AUTH.getUser().then(response => {
         // console.log(response.data);
-        if (!!response.data.user) {
+        if (response.data.user) {
           setLoggedIn(true);
           setUser(response.data.user);
         } else {
@@ -60,10 +61,10 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Books} />
-              <Route exact path="/books" component={Books} />
+              <Route exact path="/" component={Dashboard} />
+              {/* <Route exact path="/books" component={Books} />
               <Route exact path="/books/:id" component={Detail} />
-              <Route component={NoMatch} />
+              <Route component={NoMatch} /> */}
             </Switch>
           </div>
         </div>

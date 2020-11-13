@@ -7,7 +7,6 @@ import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
-import Spotify from "../../utils/Spotify";
 
 function Books() {
   // Setting our component's initial state
@@ -61,16 +60,6 @@ function Books() {
     }
   };
 
-  function getInfoFromSpotify(event) {
-    event.preventDefault();
-    console.log("Button clicked *********** ");
-    Spotify.search()
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-  };
-
     return (
       <Container fluid>
         <Row>
@@ -120,14 +109,6 @@ function Books() {
                 <h3>No Results to Display</h3>
               )}
             </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-6 sm-12"> 
-          <Jumbotron>
-              <h1> Trying Spotify API </h1>
-              <button type="button" onClick={getInfoFromSpotify}> Click here </button>
-            </Jumbotron>
           </Col>
         </Row>
       </Container>
