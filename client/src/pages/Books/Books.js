@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
-import Spotify from "../utils/Spotify";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+
+import { Col, Row, Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
+import { Card } from "../../components/Card";
+import { Input, TextArea, FormBtn } from "../../components/Form";
+import DeleteBtn from "../../components/DeleteBtn";
+import API from "../../utils/API";
 
 function Books() {
   // Setting our component's initial state
-  const [books, setBooks] = useState([])
-  const [formObject, setFormObject] = useState({})
+  const [books, setBooks] = useState([]);
+  const [formObject, setFormObject] = useState({});
+  const formEl = useRef(null);
 
   // Load all books and store them with setBooks
   useEffect(() => {
-    loadBooks()
-  }, [])
+    loadBooks();
+  }, []);
 
   // Loads all books and sets them to books
   function loadBooks() {
     API.getBooks()
-      .then(res => 
-        setBooks(res.data)
-      )
+      .then(res => {
+        // console.log(res.data.books);
+        setBooks(res.data.books);
+      })
       .catch(err => console.log(err));
   };
 
@@ -50,80 +52,63 @@ function Books() {
         author: formObject.author,
         synopsis: formObject.synopsis
       })
-        .then(res => loadBooks())
+        .then(res => {
+          formEl.current.reset();
+          loadBooks();
+        })
         .catch(err => console.log(err));
     }
-  };
-
-  function getInfoFromSpotify(event) {
-    event.preventDefault();
-    console.log("Button clicked *********** ");
-    Spotify.search()
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
   };
 
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(formObject.author && formObject.title)}
-                onClick={handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
+            <Card title="What Books Should I Read?">
+              <form ref={formEl}>
+                <Input
+                  onChange={handleInputChange}
+                  name="title"
+                  placeholder="Title (required)"
+                />
+                <Input
+                  onChange={handleInputChange}
+                  name="author"
+                  placeholder="Author (required)"
+                />
+                <TextArea
+                  onChange={handleInputChange}
+                  name="synopsis"
+                  placeholder="Synopsis (Optional)"
+                />
+                <FormBtn
+                  disabled={!(formObject.author && formObject.title)}
+                  onClick={handleFormSubmit}
+                >
+                  Submit Book
+                </FormBtn>
+              </form>
+            </Card>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {books.length ? (
-              <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-6 sm-12"> 
-          <Jumbotron>
-              <h1> Trying Spotify API </h1>
-              <button type="button" onClick={getInfoFromSpotify}> Click here </button>
-            </Jumbotron>
+            <Card title="Books On My List">
+              {books.length ? (
+                <List>
+                  {books.map(book => (
+                    <ListItem key={book._id}>
+                      <Link to={"/books/" + book._id}>
+                        <strong>
+                          {book.title} by {book.author}
+                        </strong>
+                      </Link>
+                      <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Card>
           </Col>
         </Row>
       </Container>
