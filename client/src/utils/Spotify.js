@@ -1,17 +1,21 @@
 import axios from "axios";
 
-var SpotifyWebApi = require('spotify-web-api-node');
+// var SpotifyWebApi = require('spotify-web-api-node');
  
 // credentials are optional
 // var spotifyApi = new SpotifyWebApi({
-//   clientId 
-//   clientSecret 
-//   redirectUri 
+  // clientId 
+  // clientSecret 
+  // redirectUri 
 // });
 
 let accessToken;
 
 const Spotify = {
+  // let clientId = {process.env.CLIENT_ID};
+
+  // redirectUri: process.env.REDIRECT_URI,
+
   getAccessToken() {
     if (accessToken) {
       return accessToken;
@@ -26,7 +30,7 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/'); // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirect_url}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=http://localhost:3000/`;
       window.location = accessUrl;
     }
   },
@@ -34,9 +38,9 @@ const Spotify = {
   search() {
     const accessToken = Spotify.getAccessToken();
     console.log("accesstoken: "+ accessToken);
-    const baseurl = 'https://api.spotify.com/v1/search?query=thriller&type=track&offset=0&limit=20';
+    // const baseurl = 'https://api.spotify.com/v1/search?query=thriller&type=track&offset=0&limit=20';
     // let baseurl = 'https://api.spotify.com/v1/search?q=year%3A2001&type=artist&market=US';
-    // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis';
+    let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis';
     // return fetch(`https://api.spotify.com/v1/search?type=artist&q=Elvis`, {
     return axios.get(baseurl, {
       headers: {
