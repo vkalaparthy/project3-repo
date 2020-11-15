@@ -3,8 +3,10 @@ import ArtistCard from "../../components/ArtistCard/ArtistCard";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import Spotify from "../../utils/Spotify";
+
 function Dashboard() {
   const [artistInfoArray, setArtistInfoArray]  = useState([]);
+
   function getInfoFromSpotify(event) {
     event.preventDefault();
     console.log("Button clicked *********** ");
