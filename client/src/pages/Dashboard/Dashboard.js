@@ -6,7 +6,7 @@ import Spotify from "../../utils/Spotify";
 
 function Dashboard() {
   const [artistInfoArray, setArtistInfoArray]  = useState([]);
-  
+
   function getInfoFromSpotify(event) {
     event.preventDefault();
     console.log("Button clicked *********** ");
