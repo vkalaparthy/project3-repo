@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ArtistCard from "../../components/ArtistCard/ArtistCard";
+import ArtistCard from "../../components/ArtistCard";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import Spotify from "../../utils/Spotify";
