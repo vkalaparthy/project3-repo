@@ -25,7 +25,7 @@ function SignupForm() {
   
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// TODO - validate!
+    // TODO - validate!
 		AUTH.signup({
       firstName: userObject.firstName,
       lastName: userObject.lastName,
@@ -33,11 +33,11 @@ function SignupForm() {
       password: userObject.password
     }).then(response => {
       // console.log(response);
-      if (!response.data.errmsg) {
+      if (!response.data.error) {
         setRedirectTo('/');
       } else {
         console.log("redirecting to signup failed");
-        setRedirectTo('/Signupfailed');
+        setRedirectTo('/signupfailed');
         // console.log('duplicate');
       }
     });
