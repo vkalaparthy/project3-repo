@@ -5,6 +5,7 @@ import SignupForm from './pages/Auth/SignupForm';
 import SignupFailed from './pages/Auth/SignupFailed';
 import Nav from "./components/Nav";
 import Dashboard from './pages/Dashboard';
+import Tracks from './pages/Tracks';
 // import Books from './pages/Books';
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
@@ -61,6 +62,11 @@ function App() {
               {/* <Route exact path="/books" component={Books} />
               <Route exact path="/books/:id" component={Detail} />
               <Route component={NoMatch} /> */}
+            </Switch>
+          </div>
+          <div className="main-view">
+            <Switch>
+              <Route exact path="/tracks" component={Tracks} />
             </Switch>
           </div>
         </div>
