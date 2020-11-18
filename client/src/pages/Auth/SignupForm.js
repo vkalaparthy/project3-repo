@@ -36,7 +36,9 @@ function SignupForm() {
       if (!response.data.errmsg) {
         setRedirectTo('/');
       } else {
-        console.log('duplicate');
+        console.log("redirecting to signup failed");
+        setRedirectTo('/Signupfailed');
+        // console.log('duplicate');
       }
     });
   };
@@ -50,44 +52,50 @@ function SignupForm() {
       <Row>
         <Col size="md-3"></Col>
         <Col size="md-6">
-          <Card title="Register for React Reading List">
+          <Card title="Register">
             <form style={{marginTop: 10}}>
-              <label htmlFor="username">First name: </label>
+              {/* <label htmlFor="username">First name: </label> */}
               <Input
                 type="text"
                 name="firstName"
+                placeholder="First Name"
                 value={userObject.firstName}
                 onChange={handleChange}
               />
-              <label htmlFor="username">Last name: </label>
+              {/* <label htmlFor="username">Last name: </label> */}
               <Input
                 type="text"
                 name="lastName"
+                placeholder="Last Name"
                 value={userObject.lastName}
                 onChange={handleChange}
               />
-              <label htmlFor="username">Username: </label>
+              {/* <label htmlFor="username">Username: </label> */}
               <Input
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={userObject.username}
                 onChange={handleChange}
               />
-              <label htmlFor="password">Password: </label>
+              {/* <label htmlFor="password">Password: </label> */}
               <Input
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={userObject.password}
                 onChange={handleChange}
               />
-              <label htmlFor="confirmPassword">Confirm Password: </label>
+              {/* <label htmlFor="confirmPassword">Confirm Password: </label> */}
               <Input
                 type="password"
                 name="confirmPassword"
+                placeholder="Confirm Password"
                 value={userObject.confirmPassword}
                 onChange={handleChange}
               />
-              <Link to="/">Login</Link>
+              <br></br>
+              <Link to="/">Existing user? Login</Link>
               <FormBtn onClick={handleSubmit}>Register</FormBtn>
             </form>
           </Card>

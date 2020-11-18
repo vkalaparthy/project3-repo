@@ -32,23 +32,26 @@ function LoginForm({login}) {
         <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
-            <Card title="Login to React Reading List">
+            <Card title="Welcome!">
               <form style={{marginTop: 10}}>
-                <label htmlFor="username">Username: </label>
+                {/* <label htmlFor="username">Username: </label> */}
                 <Input
                   type="text"
                   name="username"
+                  placeholder="Username"
                   value={userObject.username}
                   onChange={handleChange}
                 />
-                <label htmlFor="password">Password: </label>
+                {/* <label htmlFor="password">Password: </label> */}
                 <Input
                   type="password"
                   name="password"
+                  placeholder="Password"
                   value={userObject.password}
                   onChange={handleChange}
                 />
-                <Link to="/signup">Register</Link>
+                <br></br>
+                <Link to="/signup">Don't have an account? Sign up</Link>
                 <FormBtn onClick={handleSubmit}>Login</FormBtn>
               </form>
             </Card>
