@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TrackCard from "../../components/ArtistCard";
+import TrackCard from "../../components/TrackCard";
 import "./Tracks.css";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
@@ -23,7 +23,7 @@ function Tracks() {
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12"> 
-          <Jumbotron>
+            <Jumbotron>
               <h1 style={{marginBottom: "20px"}}> Search </h1>
               <button type="button" onClick={getInfoFromSpotify}> Search for a Track </button>
             </Jumbotron>
