@@ -24,10 +24,15 @@ const Nav = (props) => {
   
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-      <Col size="md-6 sm-6">
-        <Link to="/" className="navbar-brand">React Reading List With Auth</Link>
+      <Col size="md-2.5 sm-2.5">
+        <Link to="/" className="navbar-brand">Home</Link>
       </Col>
-      <Col size="md-6 sm-6">
+      <Col size="md-2.5 sm-2.5">
+        <div className="nav-tracks">
+          <Link to="/tracks" className="navbar-brand">Tracks</Link>
+        </div>
+      </Col>
+      <Col size="md-7 sm-7">
         <div className="float-right">
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
