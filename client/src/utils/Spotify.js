@@ -5,8 +5,8 @@ import qs from 'querystring';
 const Spotify = {
 
   getAccessToken() {
-    const clientId = '5835be81da724645ae63c6a6a496380e';
-    const clientSecret = '896dc478bdc143d8991a1d23462dc0a5';
+    const clientId = '';
+    const clientSecret = '';
     const token = btoa(`${clientId}:${clientSecret}`)
     const body = qs.stringify({ grant_type: 'client_credentials' });
     console.log(token);
