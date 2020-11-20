@@ -1,44 +1,55 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import TrackCard from "../../components/TrackCard";
 import "./Tracks.css";
-import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import { Container } from "../../components/Grid";
+// import Jumbotron from "../../components/Jumbotron";
+import SearchBox from "../../components/SearchBox";
 import Spotify from "../../utils/Spotify";
 
-function Tracks() {
-  const [trackInfoArray, setTrackInfoArray]  = useState([]);
-
-  function getInfoFromSpotify(event) {
-    event.preventDefault();
-    console.log("Button clicked *********** ");
-    Spotify.search()
-      .then(res => {
-        console.log(res.tracks.items);
-        setTrackInfoArray(res.tracks.items)
-      })
-      .catch(err => console.log(err));
+class Tracks extends Component {
+  state = {
+    search: "",
+    tracks: [],
+    results: [],
+    error: ""
   };
-  return (
-    <div className="tracks-body">
-      <Container fluid>
-        <Row>
-          <Col size="md-12 sm-12"> 
-            <Jumbotron>
-              <h1 style={{marginBottom: "20px"}}> Search </h1>
-              <button type="button" onClick={getInfoFromSpotify}> Search for a Track </button>
-            </Jumbotron>
-          </Col>
-        </Row>
-        { trackInfoArray && trackInfoArray.map((track, i) => (
-          <TrackCard
-            key={i}
-            image={track.images.length && track.images[0].url}
-            track={track.name}
+
+  componentDidMount() {
+    Spotify.getAccessToken()
+      .then(res => this.setState({ tracks: res.data.message }))
+      .catch(err => console.log(err));
+  }
+
+  handleInputChange = event => {
+    this.setState({ search: event.target.value });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    Spotify.getTrack(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
+  };
+  render() {
+    return (
+      <div>
+        <Container style={{ minHeight: "80%" }}>
+          <h1 className="text-center" style={{marginTop: "20px", marginBottom: "20px"}}> Search for a Song </h1>
+          <SearchBox
+            handleFormSubmit={this.handleFormSubmit}
+            handleInputChange={this.handleInputChange}
+            tracks={this.state.tracks}
           />
-        ))}
-      </Container>
-    </div>
-  );
+          <TrackCard results={this.state.results} />
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default Tracks;

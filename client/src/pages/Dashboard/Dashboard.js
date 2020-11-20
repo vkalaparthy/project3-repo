@@ -1,40 +1,88 @@
-import React, { useState } from "react";
-import ArtistCard from "../../components/ArtistCard";
+import React, { useContext, useState } from "react";
+import { Redirect, Link } from 'react-router-dom';
+import { ArtistsContext } from "../../utils/ArtistsContext";
+import { TracksContext } from "../../utils/TracksContext";
 import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import { Input, FormBtn } from '../../components/Form';
+import { Card } from '../../components/Card';
 import Spotify from "../../utils/Spotify";
 
 function Dashboard() {
-  const [artistInfoArray, setArtistInfoArray]  = useState([]);
+  const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
+  const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
 
-  function getInfoFromSpotify(event) {
+  const [redirectTo, setRedirectTo] = useState(null);
+
+  const [searchObject, setSearchObject] = useState({
+    type: "",
+    query: ""
+  })
+
+  function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("Button clicked *********** ");
-    Spotify.search()
+    console.log("Form submit!!!!");
+    console.log(event.target.value);  
+    console.log(searchObject);
+    Spotify.search(searchObject)
       .then(res => {
-        console.log(res.artists.items);
-        setArtistInfoArray(res.artists.items)
+        if (searchObject.type === "artist") {
+          console.log(res.artists.items);
+          setArtistInfoArray(res.artists.items);
+          setRedirectTo('/artists');
+        } else  {
+          // This is for tracks
+          setTracksInfoArray(res.tracks.items);
+          setRedirectTo('/tracks');
+        }
       })
       .catch(err => console.log(err));
   };
+
+  const handleChange = (event) => {
+		setSearchObject({
+      ...searchObject,
+			[event.target.name]: event.target.value
+    });
+    console.log(event.target.name + ": " + event.target.value);
+  };
+  
+
+  if (redirectTo) {
+    return <Redirect to={{ pathname: redirectTo }} />
+  } else {
     return (
-      <Container fluid>
+      <Container>
         <Row>
-          <Col size="md-12 sm-12"> 
-          <Jumbotron>
-              <h1> Trying Spotify API </h1>
-              <button type="button" onClick={getInfoFromSpotify}> Click Here for Elvis </button>
-            </Jumbotron>
+          <Col size="md-3"></Col>
+          <Col size="md-6">
+          <Card title="Welcome Search Page!">
+            <form style={{marginTop: 10}}>
+              <div className="form-group">
+                <label htmlFor="exampleFormControlSelect1">Select Search Type</label>
+                <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
+                  <option value="" defaultValue>Select an option</option>
+                  <option value="artist">Artist</option>
+                  <option value="tracks" >Tracks</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="search-option">Search option</label>
+                <input 
+                  type="query" 
+                  name="query"
+                  placeholder="Artist name for artist/song for track"
+                  value={searchObject.query}
+                  onChange={handleChange}
+                  className="form-control" id="artistOrTrack" placeholder="Artist name for artist/song for track"></input>
+              </div>
+              <FormBtn onClick={handleFormSubmit}>Search</FormBtn>
+            </form>
+            </Card>
           </Col>
+          <Col size="md-3"></Col>
         </Row>
-        { artistInfoArray && artistInfoArray.map((artist, i) => (
-          <ArtistCard
-            key={i}
-            image={artist.images.length && artist.images[0].url}
-            artist={artist.name}
-          />
-        ))}
       </Container>
-    );
+    );      
+  }
   }
   export default Dashboard;
