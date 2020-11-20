@@ -11,6 +11,7 @@ function Tracks() {
       { tracksInfoArray && tracksInfoArray.map((track, i) => (
         <TrackCard
           key={i}
+          songname={track.name}
           artistname={track.artists[0].name}
           song={track.external_urls.spotify}
         />
