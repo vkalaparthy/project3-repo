@@ -4,15 +4,15 @@ import { Container } from "../../components/Grid";
 import TrackCard from "../../components/TrackCard";
 
 function Tracks() {
-  const { trackInfoArray, settrackInfoArray }  = useContext(TracksContext);
+  const { tracksInfoArray, setTracksInfoArray }  = useContext(TracksContext);
 
   return (
     <Container fluid>
-      { trackInfoArray && trackInfoArray.map((track, i) => (
+      { tracksInfoArray && tracksInfoArray.map((track, i) => (
         <TrackCard
           key={i}
-          image={track.images.length && track.images[0].url}
-          track={track.name}
+          artistname={track.artists[0].name}
+          song={track.external_urls.spotify}
         />
       ))}
     </Container>
