@@ -4,7 +4,7 @@ import { ArtistsContext } from "../../utils/ArtistsContext";
 import { TracksContext } from "../../utils/TracksContext";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from '../../components/Form';
-import { Card } from '../../components/Card';
+import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
 function Dashboard() {
@@ -44,7 +44,6 @@ function Dashboard() {
     });
     console.log(event.target.name + ": " + event.target.value);
   };
-  
 
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />
@@ -52,33 +51,43 @@ function Dashboard() {
     return (
       <Container>
         <Row>
-          <Col size="md-3"></Col>
+          {/* <Col size="md-3"></Col> */}
+
           <Col size="md-6">
-          <Card title="Welcome Search Page!">
-            <form style={{marginTop: 10}}>
-              <div className="form-group">
-                <label htmlFor="exampleFormControlSelect1">Select Search Type</label>
-                <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
-                  <option value="" defaultValue>Select an option</option>
-                  <option value="artist">Artist</option>
-                  <option value="tracks" >Tracks</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="search-option">Search option</label>
-                <input 
-                  type="query" 
-                  name="query"
-                  placeholder="Artist name for artist/song for track"
-                  value={searchObject.query}
-                  onChange={handleChange}
-                  className="form-control" id="artistOrTrack" placeholder="Artist name for artist/song for track"></input>
-              </div>
-              <FormBtn onClick={handleFormSubmit}>Search</FormBtn>
-            </form>
+            <Card title="Browse">
+              <form style={{marginTop: 10}}>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect1">Select search type</label>
+                  <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
+                    <option value="" defaultValue>Select an option</option>
+                    <option value="artist">Artist</option>
+                    <option value="tracks" >Tracks</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="search-option">Enter artist or track</label>
+                  <input 
+                    type="query" 
+                    name="query"
+                    placeholder="Name/Title"
+                    value={searchObject.query}
+                    onChange={handleChange}
+                    className="form-control" id="artistOrTrack"></input>
+                </div>
+                <FormBtn onClick={handleFormSubmit}>Search</FormBtn>
+              </form>
             </Card>
           </Col>
-          <Col size="md-3"></Col>
+
+          <Col size="md-6">
+            <Card title="Listen Now">
+              <form style={{marginTop: 10}}>
+                <div class="playlists">My Playlists</div>
+                <div class="playlists">My Songs</div>
+              </form>
+            </Card>
+          </Col>
+
         </Row>
       </Container>
     );      

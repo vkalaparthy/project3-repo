@@ -5,7 +5,7 @@ body {
   background-color: #EEE2DC;
 }
 
-h1, h2{
+h1, h2 {
   /* color: #AC3B61; */
   color: white;
 }
@@ -29,7 +29,6 @@ a:hover {
 
 /* BUTTONS */
 .btn {
-  /* background-color: #123C69; */
   color: white;
   border-radius: 20px;
   border: 1px solid #9497A7;
@@ -43,7 +42,6 @@ a:hover {
 }
 
 /* CARDS */
-
 .card {
   box-sizing: border-box;
   background-color: #EDC7B7;
@@ -69,5 +67,28 @@ input {
   margin: 8px 0;
   width: 100%;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25), 0 3px 4px rgba(0, 0, 0, 0.22);
-  margin-top: 2em;
+  /* margin-top: 2em; */
+}
+
+select {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25), 0 3px 4px rgba(0, 0, 0, 0.22);
+}
+
+.playlists {
+  color: white;
+  background-color: #123C69;
+  text-align: center;
+  padding: 27px 15px;
+  margin: 2em 0;
+  border-radius: 10px;
+}
+
+.playlists:hover {
+  background-color: #BAB2B5;
+  transition: transform 80ms ease-in;
 }
