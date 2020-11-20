@@ -17,7 +17,7 @@ function SearchForm(props) {
             <option value={track} key={track} />
           ))}
         </datalist>
-        <button type="submit" style={{marginTop: "15px", marginLeft: "15px", borderColor: "#9497A7"}} onClick={props.handleFormSubmit} className="btn btn-success">
+        <button type="submit" style={{marginTop: "15px", marginLeft: "15px", borderColor: "#bab2b5", backgroundColor: "#bab2b5", borderRadius: "20px"}} onClick={props.handleFormSubmit} className="btn btn-success">
           Search
         </button>
       </div>
