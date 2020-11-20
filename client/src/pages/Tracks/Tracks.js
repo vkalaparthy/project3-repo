@@ -15,7 +15,7 @@ class Tracks extends Component {
   };
 
   componentDidMount() {
-    Spotify.getTrack()
+    Spotify.getAccessToken()
       .then(res => this.setState({ tracks: res.data.message }))
       .catch(err => console.log(err));
   }
