@@ -2,8 +2,6 @@ import axios from "axios";
 // import { useEffect } from 'react';
 import qs from 'querystring';
 
-// let accessToken;
-
 const Spotify = {
 
   getAccessToken() {
@@ -26,14 +24,23 @@ const Spotify = {
       return res.data['access_token'] })
   },
 
-  async search() {
+  async search(searchObj) {
     const accessToken = await Spotify.getAccessToken();
     console.log("accesstoken: " + accessToken);
+    
     if(accessToken) {
-      // const baseurl = 'https://api.spotify.com/v1/search?query=thriller&type=track&offset=0&limit=20';
-      // let baseurl = 'https://api.spotify.com/v1/search?q=year%3A2001&type=artist&market=US';
-      let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
-      // return fetch(`https://api.spotify.com/v1/search?type=artist&q=Elvis`, {
+      // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
+      let baseurl;
+      let query = searchObj.query;
+      
+      if (searchObj.type === 'artist') {
+        baseurl = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
+      } else {
+        baseurl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
+      }
+
+      console.log("baseurl: ", baseurl);
+
       return axios.get(baseurl, {
         headers: {
           Accept: "application/json",
@@ -45,20 +52,6 @@ const Spotify = {
         return response.data;
       })
     }
-  
-    // .then(jsonResponse => {
-    //   // if (!jsonResponse.tracks) {
-    //   //   return [];
-    //   // }
-    //   return jsonResponse.artists.items.map(item => ({
-    //     id: item.id,
-    //     name: item.name,
-    //     artist: item.artists[0].name,
-    //     album: item.album.name,
-    //     uri: item.uri
-    //   }));
-    // });
-
   },
 
   savePlaylist(name, trackUris) {
