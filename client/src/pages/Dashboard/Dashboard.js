@@ -23,19 +23,18 @@ function Dashboard() {
     console.log("Form submit!!!!");
     console.log(event.target.value);  
     console.log(searchObject);
-    Spotify.search(searchObject)
-      .then(res => {
-        if (searchObject.type === "artist") {
-          console.log(res.artists.items);
-          setArtistInfoArray(res.artists.items);
-          setRedirectTo('/artists');
-        } else  {
-          // This is for tracks
-          setTracksInfoArray(res.tracks.items);
-          setRedirectTo('/tracks');
-        }
-      })
-      .catch(err => console.log(err));
+    Spotify.search(searchObject).then(res => {
+      if (searchObject.type === "artist") {
+        console.log(res.artists.items);
+        setArtistInfoArray(res.artists.items);
+        setRedirectTo('/artists');
+      } else  {
+        // This is for tracks
+        setTracksInfoArray(res.tracks.items);
+        setRedirectTo('/tracks');
+      }
+    })
+    .catch(err => console.log(err));
   };
 
   const handleChange = (event) => {

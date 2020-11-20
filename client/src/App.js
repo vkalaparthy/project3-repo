@@ -5,14 +5,17 @@ import SignupForm from './pages/Auth/SignupForm';
 import SignupFailed from './pages/Auth/SignupFailed';
 import Nav from "./components/Nav";
 import Dashboard from './pages/Dashboard';
+import Artists from './pages/Artists';
 import Tracks from './pages/Tracks';
-// import Books from './pages/Books';
-// import Detail from "./pages/Detail";
-// import NoMatch from "./pages/NoMatch";
+import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
+import { TracksContext } from '../../client/src/utils/TracksContext';
 import AUTH from './utils/AUTH';
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [artistInfoArray, setArtistInfoArray]  = useState([]);
+  const [tracksInfoArray, setTracksInfoArray] = useState([]);
   
   useEffect(() => {
     AUTH.getUser().then(response => {
@@ -58,15 +61,13 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Dashboard} />
-              {/* <Route exact path="/books" component={Books} />
-              <Route exact path="/books/:id" component={Detail} />
-              <Route component={NoMatch} /> */}
-            </Switch>
-          </div>
-          <div className="main-view">
-            <Switch>
-              <Route exact path="/tracks" component={Tracks} />
+              <ArtistsContext.Provider value={{artistInfoArray, setArtistInfoArray}}>
+              <TracksContext.Provider value={{tracksInfoArray, setTracksInfoArray}}>
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/artists" component={Artists} />
+                <Route exact path="/tracks" component={Tracks} />
+              </TracksContext.Provider>
+              </ArtistsContext.Provider>
             </Switch>
           </div>
         </div>
