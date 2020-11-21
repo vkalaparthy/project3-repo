@@ -91,4 +91,9 @@ select {
 .playlists:hover {
   background-color: #BAB2B5;
   transition: transform 80ms ease-in;
+  margin-top: 2em;
+}
+
+.container {
+  margin-top: 10px;
 }

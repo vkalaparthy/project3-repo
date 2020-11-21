@@ -5,11 +5,14 @@ import qs from 'querystring';
 const Spotify = {
 
   getAccessToken() {
-    const clientId = '';
-    const clientSecret = '';
-    const token = btoa(`${clientId}:${clientSecret}`)
+    const clientId = process.env.REACT_APP_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+    // console.log("+++++++++++++++")
+    // console.log(clientId);
+    // console.log(clientSecret);
+    const token = btoa(`${clientId}:${clientSecret}`);
     const body = qs.stringify({ grant_type: 'client_credentials' });
-    console.log(token);
+    // console.log(token);
     
     return axios.post(
       'https://accounts.spotify.com/api/token',
