@@ -7,7 +7,7 @@ function Artists() {
   const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
 
   return (
-    <Container fluid>
+    <Container>
       { artistInfoArray && artistInfoArray.map((artist, i) => (
         <ArtistCard
           key={i}
