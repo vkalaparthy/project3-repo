@@ -5,11 +5,14 @@ import qs from 'querystring';
 const Spotify = {
 
   getAccessToken() {
-    const clientId = '';
-    const clientSecret = '';
-    const token = btoa(`${clientId}:${clientSecret}`)
+    const clientId = process.env.REACT_APP_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+    // console.log("+++++++++++++++")
+    // console.log(clientId);
+    // console.log(clientSecret);
+    const token = btoa(`${clientId}:${clientSecret}`);
     const body = qs.stringify({ grant_type: 'client_credentials' });
-    console.log(token);
+    // console.log(token);
     
     return axios.post(
       'https://accounts.spotify.com/api/token',
@@ -37,6 +40,38 @@ const Spotify = {
         baseurl = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
       } else {
         baseurl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
+      }
+
+      console.log("baseurl: ", baseurl);
+
+      return axios.get(baseurl, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${accessToken}`
+        }
+      }).then(response => {
+        console.log("*************");
+        console.log(response.data);
+        return response.data;
+      })
+    }
+  },
+
+  async browse(searchObj) {
+    const accessToken = await Spotify.getAccessToken();
+    console.log("accesstoken: " + accessToken);
+    
+    if(accessToken) {
+      // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
+      let baseurl;
+      let browseType = searchObj.browseType;
+
+      https://api.spotify.com/v1/browse/new-releases?country=US
+      
+      if (browseType === 'newReleases') {
+        baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
+      } else {
+        baseurl = `https://api.spotify.com/v1/browse/categories`;
       }
 
       console.log("baseurl: ", baseurl);
