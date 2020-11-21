@@ -7,8 +7,13 @@ import Nav from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Artists from './pages/Artists';
 import Tracks from './pages/Tracks';
+import NewReleases from './pages/NewReleases';
+import BrowseCategories from './pages/BrowseCategories';
+
 import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
 import { TracksContext } from '../../client/src/utils/TracksContext';
+import { NewReleasesContext } from './utils/NewReleasesContext';
+import { BrowseCategContext } from './utils/BrowseCategContext';
 import AUTH from './utils/AUTH';
 
 function App() {
@@ -16,6 +21,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [artistInfoArray, setArtistInfoArray]  = useState([]);
   const [tracksInfoArray, setTracksInfoArray] = useState([]);
+  const [newReleasesArray, setNewReleasesArray] = useState([]);
+  const [browseCategArray, setBrowseCategArray] = useState([]);
   
   useEffect(() => {
     AUTH.getUser().then(response => {
@@ -63,9 +70,15 @@ function App() {
             <Switch>
               <ArtistsContext.Provider value={{artistInfoArray, setArtistInfoArray}}>
               <TracksContext.Provider value={{tracksInfoArray, setTracksInfoArray}}>
+              <NewReleasesContext.Provider value={{newReleasesArray, setNewReleasesArray}}>
+              <BrowseCategContext.Provider value={{browseCategArray, setBrowseCategArray}}>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/artists" component={Artists} />
                 <Route exact path="/tracks" component={Tracks} />
+                <Route exact path="/newreleases" component={NewReleases} />
+                <Route exact path="/categories" component={BrowseCategories} />
+                </BrowseCategContext.Provider>
+              </NewReleasesContext.Provider>
               </TracksContext.Provider>
               </ArtistsContext.Provider>
             </Switch>

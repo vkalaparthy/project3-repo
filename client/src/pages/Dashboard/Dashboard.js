@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import { ArtistsContext } from "../../utils/ArtistsContext";
 import { TracksContext } from "../../utils/TracksContext";
+import { NewReleasesContext } from "../../utils/NewReleasesContext";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from '../../components/Form';
 import { Card } from "../../components/Card";
@@ -10,6 +11,7 @@ import Spotify from "../../utils/Spotify";
 function Dashboard() {
   const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
   const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
+  const { setNewReleasesArray } = useContext(NewReleasesContext);
 
   const [redirectTo, setRedirectTo] = useState(null);
 
@@ -45,11 +47,40 @@ function Dashboard() {
     console.log(event.target.name + ": " + event.target.value);
   };
 
+  const browseNewReleases = () => {
+    console.log("In browse new releases");
+    Spotify.browse({browseType: "newReleases"}).then(res => {
+      console.log(res.albums.items);
+      setNewReleasesArray(res.albums.items);
+      setRedirectTo('/newreleases');
+    })
+  };
+
+  const browseCategories = () => {
+    console.log("In browse catergoies");
+    // Spotify.browse({browseType: "categories"}).then(res => {
+    //   console.log(res.albums.items);
+    //   setNewReleasesArray(res.albums.items);
+    //   setRedirectTo('/categories');
+    // })
+  };
+
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />
   } else {
     return (
       <Container>
+        <Row> 
+          <Col size="md-3">
+              <button className="btn" onClick={browseNewReleases}>Browse New Releses </button>
+          </Col>
+          <Col size="md-3">
+            <button className="btn" onClick={browseCategories}>Browse Categories</button>
+          </Col>
+          <Col size="md-3">
+            <button className="btn" onClick={browseCategories}>Search</button>
+          </Col>
+        </Row>
         <Row>
           {/* <Col size="md-3"></Col> */}
 
@@ -82,8 +113,8 @@ function Dashboard() {
           <Col size="md-6">
             <Card title="Listen Now">
               <form style={{marginTop: 10}}>
-                <div class="playlists">My Playlists</div>
-                <div class="playlists">My Songs</div>
+                <div className="playlists">My Playlists</div>
+                <div className="playlists">My Songs</div>
               </form>
             </Card>
           </Col>
