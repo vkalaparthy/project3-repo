@@ -2,7 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #EEE2DC;
+  background-image: url("background.jpg") ;
+  background-size: cover;
+  /* background-color: #EEE2DC; */
 }
 
 h1, h2 {

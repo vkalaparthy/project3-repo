@@ -72,7 +72,7 @@ function Dashboard() {
       <Container>
         <Row> 
           <Col size="md-3">
-              <button className="btn" onClick={browseNewReleases}>Browse New Releses </button>
+              <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
           </Col>
           <Col size="md-3">
             <button className="btn" onClick={browseCategories}>Browse Categories</button>

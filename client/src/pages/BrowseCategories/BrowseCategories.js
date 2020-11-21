@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { BrowseCategContext } from "../../utils/BrowseCategContext";
 import { Redirect } from 'react-router-dom';
+import { NewReleasesContext } from "../../utils/NewReleasesContext";
 
 import { Container, Row, Col } from '../../components/Grid';
 
