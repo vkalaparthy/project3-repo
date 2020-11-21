@@ -1,22 +1,34 @@
 import React from "react";
 import "./style.css";
 
-const ArtistCard = ({ image, artistname, song }) => {
+const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
   console.log( artistname, "is in the building");
   console.log(image);
    return (
-    <div className="card artistCard">
-      <div class="col-md-3" className="flex-container" style={{ width: "300px", height: "300px", justifyContent: "center"}}>
-      <img src={image} alt="Avatar" style={{ width: "300px", height: "300px"}}/>
+    <div className="card mb-3">
+    <div className="row no-gutters">
+      <div className="col-md-4">
+        <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Avatar" style={{ width: "200px", height: "200px"}} />
       </div>
-
-      <div class="col-md-9" className="container cardBody" >
-        <h4><b style={{ color: "black", display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "20px", paddingTop: "40px"}}>Artist: {artistname}</b></h4>
-        <h4><b style={{ color: "white", display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "20px" }}>Add to Playlist<i class="fa fa-plus-square"></i></b></h4>
-        <h4><b style={{ color: "black", display: "flex", justifyContent: "center", alignItems: "center", paddingBottom: "20px" }}><a className="songLink" href={song} target="_blank" style={{ color: "white" }}>Listen Here<i class="fa fa-headphones"></i></a></b></h4>
-      
+      <div className="col-md-8">
+        <div className="card-body">
+          <p className="blackBold">Artist: {artistname}</p>
+          <p className="blackBold">Spotify Link: {externallink}</p>
+          {(genre.length !== 0) && (<ul className="blackBold">
+            Genres: {genre.map((item, i) =>
+              <li key={i}>{item}</li>
+            )}
+          </ul>)}
+        </div>
       </div>
     </div>
+    </div>
+    
   )};
 
 export default ArtistCard;
+
+// id={artist.id}
+// externallink={artist.external_urls.spotify}
+// genre={artist.genres}
+

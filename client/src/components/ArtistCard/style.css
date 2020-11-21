@@ -20,10 +20,11 @@
   justify-content: space-around;
  }
 
- .col-md-9 {
-   padding-top: 40px;
-   /* align-content: center; */
- }
+
+ .blackBold {
+  color: black;
+  font-weight: bold;
+}
 
 /*
   .flex-container {
