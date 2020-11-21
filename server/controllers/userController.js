@@ -23,7 +23,8 @@ module.exports = {
         'firstName': firstName,
         'lastName': lastName,
         'username': username,
-        'password': password
+        'password': password,
+        'playlist': []
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -46,7 +47,8 @@ module.exports = {
   },
   authenticate: (req, res) => {
 		const user = JSON.parse(JSON.stringify(req.user)); // hack
-		const cleanUser = Object.assign({}, user);
+    console.log("****  In authenticate ****");
+    const cleanUser = Object.assign({}, user);
 		if (cleanUser) {
 			// console.log(`Deleting ${cleanUser.password}`);
 			delete cleanUser.password;

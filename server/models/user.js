@@ -10,14 +10,12 @@ const userSchema = new Schema({
 	username: { type: String, unique: false, required: false },
 	password: { type: String, unique: false, required: false },
 	// img: { type: String, unique: false },
-	books: [
-		{
-		// Store ObjectIds in the array
-		type: Schema.Types.ObjectId,
-		// The ObjectIds will refer to the ids in the Book model
-		ref: "Book"
+	playlist: [
+		{ 
+			type: Schema.Types.ObjectId,
+			ref: "Song"
 		}
-  ]
+	]
 });
 
 // Define schema methods
