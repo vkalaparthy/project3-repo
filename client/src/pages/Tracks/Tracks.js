@@ -7,13 +7,14 @@ function Tracks() {
   const { tracksInfoArray, setTracksInfoArray }  = useContext(TracksContext);
 
   return (
-    <Container fluid>
+    <Container>
       { tracksInfoArray && tracksInfoArray.map((track, i) => (
         <TrackCard
           key={i}
           songname={track.name}
           artistname={track.artists[0].name}
           song={track.external_urls.spotify}
+          image={track.album.images[0].url}
         />
       ))}
     </Container>
