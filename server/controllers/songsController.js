@@ -17,8 +17,9 @@ module.exports = {
   //   }
   // },
   create: function(req, res) {
+    console.log("response for playlist", req.body);
     db.Song
-      .create(req.body)
+      .create({title: req.body.songname, artistname: req.body.artistname, url: req.body.song})
       .then(dbSong => {
         return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { playlist: dbSong._id } }, { new: true });
       })
