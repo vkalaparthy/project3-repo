@@ -7,13 +7,15 @@
   justify-content: space-around !important; 
 }
 
-/* h4 {
-  color: "black" !important; 
-  display: "flex" !important; 
-  justify-content: "center" !important; 
-  text-align: "center" !important; 
-  padding-top: "20px" !important;
-} */
+i.fa-spotify {
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -25,13 +27,3 @@
   color: black;
   font-weight: bold;
 }
-
-/*
-  .flex-container {
-  float: left !important;
-  display: flex;
-  align-self: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-} */

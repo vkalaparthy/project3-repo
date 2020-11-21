@@ -13,11 +13,13 @@ const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
       <div className="col-md-8">
         <div className="card-body">
           <p className="blackBold">Artist: {artistname}</p>
-          <p className="blackBold">Spotify Link: {externallink}</p>
           {(genre.length !== 0) && (<ul className="blackBold">
-            Genres: {genre.map((item, i) =>
+            Genres: {genre.slice(0,3).map((item, i) =>
               <li key={i}>{item}</li>
             )}
+          <br></br>
+          <p className="blackBold"> <a href={externallink} target="_blank">Check them out on Spotify!<i class="fa fa-spotify"></i></a></p>
+
           </ul>)}
         </div>
       </div>
