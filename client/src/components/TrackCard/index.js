@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import API from '../../utils/API';
+import API from "../../utils/API";
 
 const TrackCard = ({ songname, artistname, song }) => {
   console.log(artistname);
