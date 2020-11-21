@@ -1,5 +1,5 @@
 .artistCard {
-  /* border-color: blueviolet !important; */
+  align-self: center !important;
   align-items: "flex-start" !important;
   /* width: 1000px !important; */
   /* /* display: flex !important; */
@@ -22,6 +22,7 @@
 
  .col-md-9 {
    padding-top: 40px;
+   /* align-content: center; */
  }
 
 /*
