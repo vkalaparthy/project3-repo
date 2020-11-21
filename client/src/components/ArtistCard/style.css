@@ -1,0 +1,35 @@
+.artistCard {
+  /* border-color: blueviolet !important; */
+  align-items: "flex-start" !important;
+  /* width: 1000px !important; */
+  /* /* display: flex !important; */
+  flex-direction: row !important;
+  justify-content: space-around !important; 
+}
+
+/* h4 {
+  color: "black" !important; 
+  display: "flex" !important; 
+  justify-content: "center" !important; 
+  text-align: "center" !important; 
+  padding-top: "20px" !important;
+} */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ }
+
+ .col-md-9 {
+   padding-top: 40px;
+ }
+
+/*
+  .flex-container {
+  float: left !important;
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
