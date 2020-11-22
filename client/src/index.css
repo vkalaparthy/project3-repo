@@ -61,6 +61,10 @@ a:hover {
   align-items: center;
 }
 
+.playlistCard {
+  padding-left: 5em;
+}
+
 /* FORM INPUTS */
 input {
   background-color: #eee;

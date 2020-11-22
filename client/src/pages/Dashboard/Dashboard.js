@@ -3,16 +3,18 @@ import { Redirect, Link } from 'react-router-dom';
 import { ArtistsContext } from "../../utils/ArtistsContext";
 import { TracksContext } from "../../utils/TracksContext";
 import { NewReleasesContext } from "../../utils/NewReleasesContext";
+import { PlaylistContext } from "../../utils/PlaylistContext";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from '../../components/Form';
 import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
-function Dashboard() {
+function Dashboard(props) {
   const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
   const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
   const { setNewReleasesArray } = useContext(NewReleasesContext);
-
+  const { playlistArray } = useContext(PlaylistContext);
+  
   const [redirectTo, setRedirectTo] = useState(null);
 
   const [searchObject, setSearchObject] = useState({
@@ -70,20 +72,33 @@ function Dashboard() {
   } else {
     return (
       <Container>
+        
         <Row> 
-          <Col size="md-3">
+          <Col size="md-4">
               <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
           </Col>
-          <Col size="md-3">
-            <button className="btn" onClick={browseCategories}>Browse Categories</button>
-          </Col>
-          <Col size="md-3">
+          <Col size="md-4">
             <button className="btn" onClick={browseCategories}>Search</button>
           </Col>
+          <Col size="md-4">
+            <button className="btn" onClick={browseCategories}>Browse Categories</button>
+          </Col>
         </Row>
-        <Row>
-          {/* <Col size="md-3"></Col> */}
 
+        <Row className="playlistCard">
+          <Col size="md-12">
+            <Card title="My Playlists">
+              { playlistArray.map((ele, i) =>
+                <div key={i}>
+                 <p>{ele.artistname}</p>
+                  <p>{ele.title}</p>
+                </div>
+              )}
+            </Card>
+          </Col>
+        </Row>
+
+        <Row>
           <Col size="md-6">
             <Card title="Browse">
               <form style={{marginTop: 10}}>
@@ -120,6 +135,7 @@ function Dashboard() {
           </Col>
 
         </Row>
+        
       </Container>
     );      
   }
