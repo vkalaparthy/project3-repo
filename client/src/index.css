@@ -49,9 +49,7 @@ a:hover {
   background-color: #EDC7B7;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  width: 768px;
   max-width: 100%;
-  /* min-height: 480px; */
   display: flex;
 }
 
@@ -59,10 +57,6 @@ a:hover {
   background-color: #BAB2B5;
   border: transparent;
   align-items: center;
-}
-
-.playlistCard {
-  padding-left: 5em;
 }
 
 /* FORM INPUTS */
@@ -85,7 +79,7 @@ select {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25), 0 3px 4px rgba(0, 0, 0, 0.22);
 }
 
-.playlists {
+/* .playlists {
   color: white;
   background-color: #123C69;
   text-align: center;
@@ -98,8 +92,8 @@ select {
   background-color: #BAB2B5;
   transition: transform 80ms ease-in;
   margin-top: 2em;
-}
+} */
 
 .container {
-  margin-top: 10px;
+  margin-top: 2em;
 }

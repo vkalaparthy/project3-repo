@@ -72,16 +72,18 @@ function Dashboard() {
   } else {
     return (
       <Container>
+
+        <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
         
-        <Row> 
+        <Row>
           <Col size="md-4">
-              <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseNewReleases}>Browse New Releases</button></div>
           </Col>
           <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Search</button>
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
           </Col>
           <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Browse Categories</button>
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Search</button></div>
           </Col>
         </Row>
 
@@ -100,8 +102,8 @@ function Dashboard() {
 
         <Row>
           <Col size="md-6">
-            <Card title="Browse">
-              <form style={{marginTop: 10}}>
+            <Card title="Search">
+              <form>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlSelect1">Select search type</label>
                   <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
@@ -125,14 +127,7 @@ function Dashboard() {
             </Card>
           </Col>
 
-          <Col size="md-6">
-            <Card title="Listen Now">
-              <form style={{marginTop: 10}}>
-                <div className="playlists">My Playlists</div>
-                <div className="playlists">My Songs</div>
-              </form>
-            </Card>
-          </Col>
+          <Col size="md-6"></Col>
 
         </Row>
         
