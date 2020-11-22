@@ -74,6 +74,18 @@ function Dashboard() {
       <Container>
 
         <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
+        
+        <Row>
+          <Col size="md-4">
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseNewReleases}>Browse New Releases</button></div>
+          </Col>
+          <Col size="md-4">
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
+          </Col>
+          <Col size="md-4">
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Search</button></div>
+          </Col>
+        </Row>
 
         <Row className="playlistCard">
           <Col size="md-12">
@@ -88,22 +100,10 @@ function Dashboard() {
           </Col>
         </Row>
 
-        <Row> 
-          <Col size="md-4">
-              <button className="btn" onClick={browseNewReleases}>Browse New Releases</button>
-          </Col>
-          <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Browse Categories</button>
-          </Col>
-          <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Search</button>
-          </Col>
-        </Row>
-
         <Row>
           <Col size="md-6">
             <Card title="Browse">
-              <form style={{marginTop: 10}}>
+              <form>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlSelect1">Select search type</label>
                   <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
