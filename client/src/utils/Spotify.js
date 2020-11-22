@@ -57,6 +57,27 @@ const Spotify = {
     }
   },
 
+  async topSongs(searchObj) {
+    const value = searchObj.artistid;
+    console.log(value);
+    const accessToken = await Spotify.getAccessToken();
+    console.log("accesstoken: " + accessToken);
+    if(accessToken) {
+      let baseurl = `https://api.spotify.com/v1/artists/${value}/top-tracks?market=US`;
+    
+      return axios.get(baseurl, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${accessToken}`
+        }
+      }).then(response => {
+        console.log("*************");
+        console.log(response.data);
+        return response.data;
+      })
+    }
+  },
+
   async browse(searchObj) {
     const accessToken = await Spotify.getAccessToken();
     console.log("accesstoken: " + accessToken);
@@ -65,8 +86,6 @@ const Spotify = {
       // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
       let baseurl;
       let browseType = searchObj.browseType;
-
-      https://api.spotify.com/v1/browse/new-releases?country=US
       
       if (browseType === 'newReleases') {
         baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
