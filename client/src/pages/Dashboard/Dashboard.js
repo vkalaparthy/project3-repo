@@ -102,7 +102,7 @@ function Dashboard() {
 
         <Row>
           <Col size="md-6">
-            <Card title="Browse">
+            <Card title="Search">
               <form>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlSelect1">Select search type</label>
