@@ -73,6 +73,8 @@ function Dashboard() {
     return (
       <Container>
 
+        <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
+
         <Row className="playlistCard">
           <Col size="md-12">
             <Card title="My Playlists">
@@ -88,13 +90,13 @@ function Dashboard() {
 
         <Row> 
           <Col size="md-4">
-              <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
-          </Col>
-          <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Search</button>
+              <button className="btn" onClick={browseNewReleases}>Browse New Releases</button>
           </Col>
           <Col size="md-4">
             <button className="btn" onClick={browseCategories}>Browse Categories</button>
+          </Col>
+          <Col size="md-4">
+            <button className="btn" onClick={browseCategories}>Search</button>
           </Col>
         </Row>
 
@@ -125,14 +127,7 @@ function Dashboard() {
             </Card>
           </Col>
 
-          <Col size="md-6">
-            <Card title="Listen Now">
-              <form style={{marginTop: 10}}>
-                <div className="playlists">My Playlists</div>
-                <div className="playlists">My Songs</div>
-              </form>
-            </Card>
-          </Col>
+          <Col size="md-6"></Col>
 
         </Row>
         
