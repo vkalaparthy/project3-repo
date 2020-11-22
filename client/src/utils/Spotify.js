@@ -27,6 +27,18 @@ const Spotify = {
       return res.data['access_token'] })
   },
 
+  async commonSpoitifyCall(baseUrl, accessToken) {
+    const response = await axios.get(baseUrl, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+    console.log("*************");
+    console.log(response.data);
+    return response.data;
+  },
+
   async search(searchObj) {
     const accessToken = await Spotify.getAccessToken();
     console.log("accesstoken: " + accessToken);
@@ -44,16 +56,19 @@ const Spotify = {
 
       console.log("baseurl: ", baseurl);
 
-      return axios.get(baseurl, {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${accessToken}`
-        }
-      }).then(response => {
-        console.log("*************");
-        console.log(response.data);
-        return response.data;
-      })
+      return this.commonSpoitifyCall(baseurl, accessToken);
+    }
+  },
+
+  async topSongs(searchObj) {
+    const value = searchObj.artistid;
+    console.log(value);
+    const accessToken = await Spotify.getAccessToken();
+    console.log("accesstoken: " + accessToken);
+    if(accessToken) {
+      let baseurl = `https://api.spotify.com/v1/artists/${value}/top-tracks?market=US`;
+    
+      return this.commonSpoitifyCall(baseurl, accessToken);
     }
   },
 
@@ -65,8 +80,6 @@ const Spotify = {
       // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
       let baseurl;
       let browseType = searchObj.browseType;
-
-      https://api.spotify.com/v1/browse/new-releases?country=US
       
       if (browseType === 'newReleases') {
         baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
@@ -76,45 +89,36 @@ const Spotify = {
 
       console.log("baseurl: ", baseurl);
 
-      return axios.get(baseurl, {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${accessToken}`
-        }
-      }).then(response => {
-        console.log("*************");
-        console.log(response.data);
-        return response.data;
-      })
+      return this.commonSpoitifyCall(baseurl, accessToken);
     }
-  },
-
-  savePlaylist(name, trackUris) {
-    if (!name || !trackUris.length) {
-      return;
-    }
-    const accessToken = Spotify.getAccessToken();
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    let userId;
-    return axios.post('https://api.spotify.com/v1/me', {headers: headers}
-    ).then(response => response.json()
-    ).then(jsonResponse => {
-      userId = jsonResponse.id;
-      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-        headers: headers,
-        method: 'POST',
-        body: JSON.stringify({name: name})
-      }).then(response => response.json()
-      ).then(jsonResponse => {
-        const playlistId = jsonResponse.id;
-        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-          headers: headers,
-          method: 'POST',
-          body: JSON.stringify({uris: trackUris})
-        });
-      });
-    });
   }
+
+  // savePlaylist(name, trackUris) {
+  //   if (!name || !trackUris.length) {
+  //     return;
+  //   }
+  //   const accessToken = Spotify.getAccessToken();
+  //   const headers = { Authorization: `Bearer ${accessToken}` };
+  //   let userId;
+  //   return axios.post('https://api.spotify.com/v1/me', {headers: headers}
+  //   ).then(response => response.json()
+  //   ).then(jsonResponse => {
+  //     userId = jsonResponse.id;
+  //     return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+  //       headers: headers,
+  //       method: 'POST',
+  //       body: JSON.stringify({name: name})
+  //     }).then(response => response.json()
+  //     ).then(jsonResponse => {
+  //       const playlistId = jsonResponse.id;
+  //       return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+  //         headers: headers,
+  //         method: 'POST',
+  //         body: JSON.stringify({uris: trackUris})
+  //       });
+  //     });
+  //   });
+  // }
 };
 
 export default Spotify;

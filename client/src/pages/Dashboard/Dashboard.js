@@ -9,7 +9,7 @@ import { Input, FormBtn } from '../../components/Form';
 import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
-function Dashboard(props) {
+function Dashboard() {
   const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
   const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
   const { setNewReleasesArray } = useContext(NewReleasesContext);
