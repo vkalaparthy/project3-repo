@@ -72,18 +72,6 @@ function Dashboard() {
   } else {
     return (
       <Container>
-        
-        <Row> 
-          <Col size="md-4">
-              <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
-          </Col>
-          <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Search</button>
-          </Col>
-          <Col size="md-4">
-            <button className="btn" onClick={browseCategories}>Browse Categories</button>
-          </Col>
-        </Row>
 
         <Row className="playlistCard">
           <Col size="md-12">
@@ -95,6 +83,18 @@ function Dashboard() {
                 </div>
               )}
             </Card>
+          </Col>
+        </Row>
+
+        <Row> 
+          <Col size="md-4">
+              <button className="btn" onClick={browseNewReleases}>Browse New Releases </button>
+          </Col>
+          <Col size="md-4">
+            <button className="btn" onClick={browseCategories}>Search</button>
+          </Col>
+          <Col size="md-4">
+            <button className="btn" onClick={browseCategories}>Browse Categories</button>
           </Col>
         </Row>
 
