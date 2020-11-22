@@ -14,6 +14,7 @@ import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
 import { TracksContext } from '../../client/src/utils/TracksContext';
 import { NewReleasesContext } from './utils/NewReleasesContext';
 import { BrowseCategContext } from './utils/BrowseCategContext';
+import { PlaylistContext } from './utils/PlaylistContext';
 import AUTH from './utils/AUTH';
 
 function App() {
@@ -23,9 +24,12 @@ function App() {
   const [tracksInfoArray, setTracksInfoArray] = useState([]);
   const [newReleasesArray, setNewReleasesArray] = useState([]);
   const [browseCategArray, setBrowseCategArray] = useState([]);
+  const [playlistArray, setPlaylistArray] = useState([]);
   
   useEffect(() => {
     AUTH.getUser().then(response => {
+        // console.log(response.data);
+        console.log("+++++++++++++++");
         // console.log(response.data);
         if (response.data.user) {
           setLoggedIn(true);
@@ -54,10 +58,13 @@ function App() {
     const login = (username, password) => {
         AUTH.login(username, password).then(response => {
       console.log(response.data);
+      console.log("*************");
+      console.log(response.data.user.playlist);
       if (response.status === 200) {
         // update the state
         setLoggedIn(true);
         setUser(response.data.user);
+        setPlaylistArray(response.data.user.playlist);
       }
     });
     };
@@ -72,12 +79,14 @@ function App() {
               <TracksContext.Provider value={{tracksInfoArray, setTracksInfoArray}}>
               <NewReleasesContext.Provider value={{newReleasesArray, setNewReleasesArray}}>
               <BrowseCategContext.Provider value={{browseCategArray, setBrowseCategArray}}>
+              <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/artists" component={Artists} />
                 <Route exact path="/tracks" component={Tracks} />
                 <Route exact path="/newreleases" component={NewReleases} />
                 <Route exact path="/categories" component={BrowseCategories} />
-                </BrowseCategContext.Provider>
+              </PlaylistContext.Provider>
+              </BrowseCategContext.Provider>
               </NewReleasesContext.Provider>
               </TracksContext.Provider>
               </ArtistsContext.Provider>
