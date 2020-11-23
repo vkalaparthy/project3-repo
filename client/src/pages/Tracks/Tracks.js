@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TracksContext } from "../../utils/TracksContext";
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Container } from "../../components/Grid";
@@ -9,6 +9,38 @@ import { FormBtn } from '../../components/Form';
 
 function Tracks() {
   const { tracksInfoArray, setTracksInfoArray }  = useContext(TracksContext);
+
+  const handleChange = (event) => {
+		setSearchObject({
+      ...searchObject,
+			[event.target.name]: event.target.value
+    });
+    console.log(event.target.name + ": " + event.target.value);
+  };
+
+  const [searchObject, setSearchObject] = useState({
+    type: "",
+    query: ""
+  });
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log("Form submit!!!!");
+    console.log(event.target.value);  
+    console.log(searchObject);
+    Spotify.search(searchObject).then(res => {
+      if (searchObject.type === "artist") {
+        console.log(res.artists.items);
+        setArtistInfoArray(res.artists.items);
+        setRedirectTo('/artists');
+      } else  {
+        // This is for tracks
+        setTracksInfoArray(res.tracks.items);
+        setRedirectTo('/tracks');
+      }
+    })
+    .catch(err => console.log(err));
+  };
 
   if (!tracksInfoArray.length) {
     return <Redirect to='/' />
