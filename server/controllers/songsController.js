@@ -3,19 +3,23 @@ const db = require("../models");
 
 // Defining methods for the songsController
 module.exports = {
-  // findAll: function(req, res) {
-  //   if (req.user) {
-  //     db.User
-  //       .find({ _id: req.user._id })
-  //       .populate({ path: "playlist", options: { sort: { 'date': -1 } } })
-  //       .then(users => {
-  //         res.json({ playlist: users[0].playlist });
-  //       })
-  //       .catch(err => res.status(422).json(err));
-  //   } else {
-  //     return res.json({ books: null });
-  //   }
-  // },
+  findAll: function(req, res) {
+    console.log("In findAll SongsController");
+    console.log(req.user._id);
+    db.User.findOne({ _id: req.user._id }).populate('playlist')
+      .then(userMatch => {
+        // console.log(res.data.playlist);
+        // return res.json(res.data.playlist);
+        if(userMatch) {
+          console.log(userMatch.playlist);
+          return res.json(userMatch.playlist);
+        }
+      })
+      .catch(err => {
+        console.log("FAILED");
+        return res.status(422).json(err)
+      });
+  },
   create: function(req, res) {
     console.log("response for playlist", req.body);
     db.Song

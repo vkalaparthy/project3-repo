@@ -16,6 +16,7 @@ import { NewReleasesContext } from './utils/NewReleasesContext';
 import { BrowseCategContext } from './utils/BrowseCategContext';
 import { PlaylistContext } from './utils/PlaylistContext';
 import AUTH from './utils/AUTH';
+import API from './utils/API';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -32,17 +33,24 @@ function App() {
         console.log("+++++++++++++++");
         // console.log(response.data);
         if (response.data.user) {
+          console.log("+++++++++++++++");
+          console.log(response.data.user._id);
           setLoggedIn(true);
           setUser(response.data.user);
+          API.getSongs().then(res => {
+            console.log("+++++++++++++++");
+            console.log(res.data);
+            setPlaylistArray(res.data);
+          })
         } else {
           setLoggedIn(false);
           setUser(null);
         }
-      });
-      return () => {
-        setLoggedIn(false);
-        setUser(null);
-      };
+    });
+    return () => {
+      setLoggedIn(false);
+      setUser(null);
+    };
   }, []);
     const logout = (event) => {
     event.preventDefault();
