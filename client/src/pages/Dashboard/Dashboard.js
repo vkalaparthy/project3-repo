@@ -92,8 +92,8 @@ function Dashboard() {
             <Card title="My Playlists">
               { playlistArray.map((ele, i) =>
                 <div className="p-2" key={i}> 
-                  <h5>{ele.title}</h5>
-                  <h6>{ele.artistname}</h6>
+                  <h5><a className="pr-1"><i className="fa fa-play"></i></a> <span></span> {ele.title}</h5> 
+                  <h6><div className="pl-4">{ele.artistname}</div></h6>
                   <hr></hr>
                 </div>
               )}
