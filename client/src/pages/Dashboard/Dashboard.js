@@ -91,9 +91,9 @@ function Dashboard() {
           <Col size="md-12">
             <Card title="My Playlists">
               { playlistArray.map((ele, i) =>
-                <div key={i}>
-                 <p>{ele.artistname}</p>
-                  <p>{ele.title}</p>
+                <div className="p-2" key={i}>
+                  <h5>{ele.title}</h5>
+                  <p>{ele.artistname}</p>
                 </div>
               )}
             </Card>
@@ -101,7 +101,9 @@ function Dashboard() {
         </Row>
 
         <Row>
-          <Col size="md-6">
+          <Col size="md-2"></Col>
+
+          <Col size="md-8">
             <Card title="Search">
               <form>
                 <div className="form-group">
@@ -127,7 +129,7 @@ function Dashboard() {
             </Card>
           </Col>
 
-          <Col size="md-6"></Col>
+          <Col size="md-2"></Col>
 
         </Row>
         
