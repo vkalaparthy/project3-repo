@@ -1,5 +1,7 @@
+/* STYLING FOR TRACKS CARDS */
+
 a.songLink:hover {
-  color: lightgrey
+  color: #BAB2B5;
 }
 
 i.fa-plus-square {
@@ -33,6 +35,10 @@ b.playlist {
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+}
+
+.playlist:hover {
+  color: #BAB2B5;
 }
 
 b.song {
