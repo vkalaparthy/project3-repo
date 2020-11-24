@@ -10,6 +10,15 @@ h1, h2 {
   color: white;
 }
 
+h5 {
+  color: #AC3B61;
+}
+
+h6 {
+  color: #AC3B61;
+  opacity: 0.7;
+}
+
 a {
   color: #123C69;
 }
