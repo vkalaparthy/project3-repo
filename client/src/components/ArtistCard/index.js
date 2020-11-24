@@ -12,7 +12,7 @@ const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
 
   const getTopSongs = (value) => {
     console.log("Button clicked!" + value);
-    Spotify.topSongs({artistid: value}).then(res => {
+    Spotify.topSongs({artistId: value}).then(res => {
       console.log(res.tracks);
       setTracksInfoArray(res.tracks);
       setRedirectTo('/tracks');
