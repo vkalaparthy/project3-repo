@@ -91,9 +91,10 @@ function Dashboard() {
           <Col size="md-12">
             <Card title="My Playlists">
               { playlistArray.map((ele, i) =>
-                <div className="p-2" key={i}>
+                <div className="p-2" key={i}> 
                   <h5>{ele.title}</h5>
-                  <p>{ele.artistname}</p>
+                  <h6>{ele.artistname}</h6>
+                  <hr></hr>
                 </div>
               )}
             </Card>

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import { Col } from '../Grid';
+import { Row, Col, Container } from '../Grid';
 import './Nav.css';
 
 const Nav = (props) => {
@@ -23,17 +23,18 @@ const Nav = (props) => {
   }
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-      <Col size="md-2.5 sm-2.5">
+    <nav className="navbar navbar-dark p-3">
+  
+      <Col size="md-1">
         <Link to="/" className="navbar-brand">Home</Link>
       </Col>
-      <Col size="md-2.5 sm-2.5">
+      <Col size="md-1">
         <div className="nav-tracks">
           <Link to="/tracks" className="navbar-brand">Tracks</Link>
         </div>
       </Col>
-      <Col size="md-7 sm-7">
-        <div className="float-right">
+      <Col size="md-10">
+        <div className="d-flex justify-content-end">
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
       </Col>
