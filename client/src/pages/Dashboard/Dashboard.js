@@ -10,8 +10,8 @@ import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
 function Dashboard() {
-  const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
-  const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
+  const { setArtistInfoArray }  = useContext(ArtistsContext);
+  const { setTracksInfoArray } = useContext(TracksContext);
   const { setNewReleasesArray } = useContext(NewReleasesContext);
   const { playlistArray } = useContext(PlaylistContext);
   
@@ -111,7 +111,7 @@ function Dashboard() {
                   <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
                     <option value="" defaultValue>Select an option</option>
                     <option value="artist">Artist</option>
-                    <option value="tracks" >Tracks</option>
+                    <option value="track" >Tracks</option>
                   </select>
                 </div>
                 <div className="form-group">
