@@ -44,15 +44,7 @@ const Spotify = {
     console.log("accesstoken: " + accessToken);
     
     if(accessToken) {
-      // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
-      let baseurl;
-      let query = searchObj.query;
-      
-      if (searchObj.type === 'artist') {
-        baseurl = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
-      } else {
-        baseurl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
-      }
+      const baseurl = `https://api.spotify.com/v1/search?q=${searchObj.query}&type=${searchObj.type}`;
 
       console.log("baseurl: ", baseurl);
 
@@ -61,7 +53,7 @@ const Spotify = {
   },
 
   async topSongs(searchObj) {
-    const value = searchObj.artistid;
+    const value = searchObj.artistId;
     console.log(value);
     const accessToken = await Spotify.getAccessToken();
     console.log("accesstoken: " + accessToken);
@@ -77,15 +69,15 @@ const Spotify = {
     console.log("accesstoken: " + accessToken);
     
     if(accessToken) {
-      // let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
       let baseurl;
       let browseType = searchObj.browseType;
       
       if (browseType === 'newReleases') {
         baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
-      } else {
-        baseurl = `https://api.spotify.com/v1/browse/categories`;
-      }
+      } 
+      // else {
+      //   baseurl = `https://api.spotify.com/v1/browse/categories`;
+      // }
 
       console.log("baseurl: ", baseurl);
 
