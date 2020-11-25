@@ -34,9 +34,10 @@ In addition to being deployed on Heroku, here is a GIF showing the app's full fu
 ## Contact Information
 * Jarrod Bataille
 
-  * Portfolio Webpage: https://jtbataille.github.io/
-  * GitHub Profile: https://github.com/jtbataille
-  * E-mail Address: jtbataille@gmail.com
+  * E-mail: jtbataille@gmail.com
+  * GitHub: https://github.com/jtbataille
+  * Portfolio: https://jtbataille.github.io/
+  
 
 * Masiel Bautista
    
