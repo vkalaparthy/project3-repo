@@ -15,7 +15,7 @@ const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
     Spotify.topSongs({artistId: value}).then(res => {
       console.log(res.tracks);
       setTracksInfoArray(res.tracks);
-      setRedirectTo('/tracks');
+      setRedirectTo('/search');
     })
     .catch(err => console.log(err));
   };
@@ -48,8 +48,3 @@ const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
 };
 
 export default ArtistCard;
-
-// id={artist.id}
-// externallink={artist.external_urls.spotify}
-// genre={artist.genres}
-

@@ -25,32 +25,32 @@ function Dashboard() {
     query: ""
   })
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log("Form submit!!!!");
-    console.log(event.target.value);  
-    console.log(searchObject);
-    Spotify.search(searchObject).then(res => {
-      if (searchObject.type === "artist") {
-        console.log(res.artists.items);
-        setArtistInfoArray(res.artists.items);
-        setRedirectTo('/artists');
-      } else  {
-        // This is for tracks
-        setTracksInfoArray(res.tracks.items);
-        setRedirectTo('/tracks');
-      }
-    })
-    .catch(err => console.log(err));
-  };
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   console.log("Form submit!!!!");
+  //   console.log(event.target.value);  
+  //   console.log(searchObject);
+  //   Spotify.search(searchObject).then(res => {
+  //     if (searchObject.type === "artist") {
+  //       console.log(res.artists.items);
+  //       setArtistInfoArray(res.artists.items);
+  //       setRedirectTo('/artists');
+  //     } else  {
+  //       // This is for tracks
+  //       setTracksInfoArray(res.tracks.items);
+  //       setRedirectTo('/tracks');
+  //     }
+  //   })
+  //   .catch(err => console.log(err));
+  // };
 
-  const handleChange = (event) => {
-		setSearchObject({
-      ...searchObject,
-			[event.target.name]: event.target.value
-    });
-    console.log(event.target.name + ": " + event.target.value);
-  };
+  // const handleChange = (event) => {
+	// 	setSearchObject({
+  //     ...searchObject,
+	// 		[event.target.name]: event.target.value
+  //   });
+  //   console.log(event.target.name + ": " + event.target.value);
+  // };
 
   const handleDelete = (id) => {
     console.log(id);

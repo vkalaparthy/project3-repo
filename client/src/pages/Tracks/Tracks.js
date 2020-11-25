@@ -56,7 +56,7 @@ function Tracks() {
                   <select name="type"  onChange={handleChange} className="form-control" id="exampleFormControlSelect1">
                     <option value="" defaultValue>Select an option</option>
                     <option value="artist">Artist</option>
-                    <option value="tracks" >Tracks</option>
+                    <option value="track" >Tracks</option>
                   </select>
                 </div>
                 <div className="form-group">

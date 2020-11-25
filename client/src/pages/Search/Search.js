@@ -1,25 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Redirect, Link } from 'react-router-dom';
 import { ArtistsContext } from "../../utils/ArtistsContext";
 import { TracksContext } from "../../utils/TracksContext";
-import { NewReleasesContext } from "../../utils/NewReleasesContext";
-import { PlaylistContext } from "../../utils/PlaylistContext";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, FormBtn } from '../../components/Form';
+import { FormBtn } from '../../components/Form';
 import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 import TrackCard from "../../components/TrackCard";
 import ArtistCard from "../../components/ArtistCard";
 
-import AudioPlayer from 'react-h5-audio-player';
-import API from "../../utils/API";
 
 function Search() {
 
   const { artistInfoArray, setArtistInfoArray }  = useContext(ArtistsContext);
   const { tracksInfoArray, setTracksInfoArray } = useContext(TracksContext);
-  const { setNewReleasesArray } = useContext(NewReleasesContext);
-  const { playlistArray } = useContext(PlaylistContext);
+
   
   const [searchObject, setSearchObject] = useState({
     type: "",
@@ -32,6 +26,7 @@ function Search() {
     // empty the content of Both artistArray and Tracks Array
     setArtistInfoArray([]);
     setTracksInfoArray([]);
+    console.log(searchObject);
     console.log(event.target.value);  
     console.log(searchObject);
     Spotify.search(searchObject).then(res => {
@@ -97,7 +92,7 @@ function Search() {
             />
           ))
           }
-          { artistInfoArray.map((artist, i) => (
+          { artistInfoArray && artistInfoArray.map((artist, i) => (
             <ArtistCard
               key={i}
               image={artist.images.length && artist.images[0].url}
