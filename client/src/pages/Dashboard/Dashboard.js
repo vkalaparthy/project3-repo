@@ -68,6 +68,11 @@ function Dashboard() {
     })
   };
 
+  const handleSearch = () => {
+    console.log("Go to search page");
+    setRedirectTo('/search');
+  }
+
   const browseCategories = () => {
     console.log("In browse catergoies");
     // Spotify.browse({browseType: "categories"}).then(res => {
@@ -93,7 +98,7 @@ function Dashboard() {
             <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
           </Col>
           <Col size="md-4">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Search</button></div>
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
           </Col>
         </Row>
 
@@ -124,7 +129,7 @@ function Dashboard() {
           </Col>
         </Row>
 
-        <Row>
+        {/* <Row>
           <Col size="md-2"></Col>
 
           <Col size="md-8">
@@ -155,7 +160,7 @@ function Dashboard() {
 
           <Col size="md-2"></Col>
 
-        </Row>
+        </Row> */}
         
       </Container>
     );      

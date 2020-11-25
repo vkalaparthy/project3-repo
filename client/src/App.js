@@ -5,6 +5,7 @@ import SignupForm from './pages/Auth/SignupForm';
 import SignupFailed from './pages/Auth/SignupFailed';
 import Nav from "./components/Nav";
 import Dashboard from './pages/Dashboard';
+import Search from './pages/Search';
 import Artists from './pages/Artists';
 import Tracks from './pages/Tracks';
 import NewReleases from './pages/NewReleases';
@@ -89,6 +90,7 @@ function App() {
               <BrowseCategContext.Provider value={{browseCategArray, setBrowseCategArray}}>
               <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
                 <Route exact path="/" component={Dashboard} />
+                <Route exact path="/Search" component={Search} />
                 <Route exact path="/artists" component={Artists} />
                 <Route exact path="/tracks" component={Tracks} />
                 <Route exact path="/newreleases" component={NewReleases} />
