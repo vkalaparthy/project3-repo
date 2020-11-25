@@ -104,10 +104,10 @@ function Dashboard() {
                 <div className="p-2" key={i}> 
                   <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
                   <h5>
-                  <AudioPlayer
+                  {ele.preview && <AudioPlayer
                     src={ele.preview}
                     onPlay={e => console.log("onPlay")}
-                  />
+                  />}
                     <a className="pr-1" ><i className="fa fa-play"></i></a> <span></span> 
                     {ele.title} <span></span> 
                     <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a>
