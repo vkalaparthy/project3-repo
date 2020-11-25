@@ -108,6 +108,7 @@ function Dashboard() {
                     src={ele.preview}
                     onPlay={e => console.log("onPlay")}
                   />}
+                  {!ele.preview && <p className="blackBold">:( Sorry! There's no preview available!</p>}
                     <a className="pr-1" ><i className="fa fa-play"></i></a> <span></span> 
                     {ele.title} <span></span> 
                     <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a>
