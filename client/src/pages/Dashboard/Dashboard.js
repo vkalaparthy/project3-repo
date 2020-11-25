@@ -19,10 +19,11 @@ function Dashboard() {
   
   const [redirectTo, setRedirectTo] = useState(null);
 
-  const [searchObject, setSearchObject] = useState({
-    type: "",
-    query: ""
-  });
+  useEffect(() => {
+    API.getSongs().then(res => {
+      setPlaylistArray(res.data);
+    });
+  }, []);
 
   const handleDelete = (id) => {
     API.deleteSong(id);
@@ -30,12 +31,6 @@ function Dashboard() {
       setPlaylistArray(res.data);
     });
   };
-
-  useEffect(() => {
-    API.getSongs().then(res => {
-      setPlaylistArray(res.data);
-    });
-  }, []);
 
   const browseNewReleases = () => {
     Spotify.browse({browseType: "newReleases"}).then(res => {
