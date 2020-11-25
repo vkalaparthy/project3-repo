@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Card = (props) => (
-  <div className="card mt-5" style={{ maxHeight: 770 }}>
+  <div className="card mt-5">
     <div className="card-header">
       <h1>{props.title}</h1>
     </div>
