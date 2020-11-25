@@ -48,8 +48,3 @@ const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
 };
 
 export default ArtistCard;
-
-// id={artist.id}
-// externallink={artist.external_urls.spotify}
-// genre={artist.genres}
-
