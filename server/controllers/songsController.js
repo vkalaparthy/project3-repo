@@ -23,7 +23,7 @@ module.exports = {
   create: function(req, res) {
     console.log("response for playlist", req.body);
     db.Song
-      .create({title: req.body.songname, artistname: req.body.artistname, url: req.body.song})
+      .create({title: req.body.songname, artistname: req.body.artistname, url: req.body.song, image: req.body.image, preview: req.body.preview})
       .then(dbSong => {
         return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { playlist: dbSong._id } }, { new: true }).populate("playlist");
       })
@@ -32,5 +32,14 @@ module.exports = {
         res.json(dbUser);
       })
       .catch(err => res.status(422).json(err));
+  },
+  delete: function(req, res) {
+    db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { playlist: new ObjectId(req.params.id) } }, { new: true })
+      .then(() => {
+        db.Song
+          .findOneAndDelete({ _id: req.params.id })
+          .then(dbSong => res.json(dbSong))
+          .catch(err => res.status(422).json(err));
+      });
   }
 };
