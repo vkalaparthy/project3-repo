@@ -9,6 +9,9 @@ import { Input, FormBtn } from '../../components/Form';
 import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
+import AudioPlayer from 'react-h5-audio-player';
+import API from "../../utils/API";
+
 function Dashboard() {
   const { setArtistInfoArray }  = useContext(ArtistsContext);
   const { setTracksInfoArray } = useContext(TracksContext);
@@ -48,6 +51,13 @@ function Dashboard() {
     });
     console.log(event.target.name + ": " + event.target.value);
   };
+
+  const handleDelete = (id) => {
+    console.log(id);
+    // console.log(event.target);
+    API.deleteSong(id);
+    // setRedirectTo("/");
+  } 
 
   const browseNewReleases = () => {
     console.log("In browse new releases");
@@ -92,10 +102,16 @@ function Dashboard() {
             <Card title="My Playlists">
               { playlistArray.map((ele, i) =>
                 <div className="p-2" key={i}> 
+                  <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
                   <h5>
-                    <a className="pr-1"><i className="fa fa-play"></i></a> <span></span> 
+                  <AudioPlayer
+                    src={ele.preview}
+                    onPlay={e => console.log("onPlay")}
+                  />
+                    <a className="pr-1" ><i className="fa fa-play"></i></a> <span></span> 
                     {ele.title} <span></span> 
-                    <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash"></i></a>
+                    <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a>
+                    {/* <button style={{ float: "right"}} className="btn btn-outline" onClick={() => handleDelete(ele._id)}><i className="fa fa-trash"></i></button> */}
                   </h5> 
                   <h6>
                     <div className="pl-4">{ele.artistname}</div> 

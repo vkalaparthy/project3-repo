@@ -5,4 +5,8 @@ router.route("/")
   .get(songsController.findAll)
   .post(songsController.create);
 
+router
+  .route("/:id")
+  .delete(songsController.delete);
+
 module.exports = router;

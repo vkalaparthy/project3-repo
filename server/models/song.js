@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const songSchema = new Schema({
   title: { type: String, required: true },
   artistname: { type: String, required: true },
-  url: { type: String, required: true }
+  url: { type: String, required: true },
+  image: {type: String, required: true },
+  preview: { type: String, required: true }
 });
 
 const Song = mongoose.model("Song", songSchema);

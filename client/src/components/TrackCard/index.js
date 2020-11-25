@@ -2,11 +2,11 @@ import React from "react";
 import "./style.css";
 import API from "../../utils/API";
 
-const TrackCard = ({ songname, artistname, song, image }) => {
+const TrackCard = ({ songname, artistname, song, image, preview }) => {
   console.log(artistname);
   console.log(song);
   const handleAdd = () => {
-    API.addSong ({songname, artistname, song})
+    API.addSong ({songname, artistname, song, image, preview})
     .then (response => {
       console.log(response.data)
     });

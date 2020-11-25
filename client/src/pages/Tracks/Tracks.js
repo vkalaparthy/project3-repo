@@ -82,6 +82,7 @@ function Tracks() {
               artistname={track.artists[0].name}
               song={track.external_urls.spotify}
               image={track.album.images[0].url}
+              preview={track.preview_url}
             />
           ))}
           </Col>
