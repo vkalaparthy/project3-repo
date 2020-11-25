@@ -104,11 +104,21 @@ function Dashboard() {
                 <div className="p-2" key={i}> 
                   <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
                   <h5>
+<<<<<<< HEAD
                     {ele.preview && <AudioPlayer
                       src={ele.preview}
                       onPlay={e => console.log("onPlay")}
                     />}
                     {ele.title}
+=======
+                  {ele.preview && <AudioPlayer
+                    src={ele.preview}
+                    onPlay={e => console.log("onPlay")}
+                  />}
+                  {!ele.preview && <p className="blackBold">:( Sorry! There's no preview available!</p>}
+                    <a className="pr-1" ><i className="fa fa-play"></i></a> <span></span> 
+                    {ele.title} <span></span> 
+>>>>>>> 256cf97734e5faab4e5288c49e65a2b19159bed6
                     <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a>
                     {/* <button style={{ float: "right"}} className="btn btn-outline" onClick={() => handleDelete(ele._id)}><i className="fa fa-trash"></i></button> */}
                   </h5> 
