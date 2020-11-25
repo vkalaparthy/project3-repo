@@ -27,7 +27,7 @@ const Spotify = {
       return res.data['access_token'] })
   },
 
-  async commonSpoitifyCall(baseUrl, accessToken) {
+  async commonSpotifyCall(baseUrl, accessToken) {
     const response = await axios.get(baseUrl, {
       headers: {
         Accept: "application/json",
@@ -48,7 +48,7 @@ const Spotify = {
 
       console.log("baseurl: ", baseurl);
 
-      return this.commonSpoitifyCall(baseurl, accessToken);
+      return this.commonSpotifyCall(baseurl, accessToken);
     }
   },
 
@@ -60,7 +60,7 @@ const Spotify = {
     if(accessToken) {
       let baseurl = `https://api.spotify.com/v1/artists/${value}/top-tracks?market=US`;
     
-      return this.commonSpoitifyCall(baseurl, accessToken);
+      return this.commonSpotifyCall(baseurl, accessToken);
     }
   },
 
@@ -81,7 +81,7 @@ const Spotify = {
 
       console.log("baseurl: ", baseurl);
 
-      return this.commonSpoitifyCall(baseurl, accessToken);
+      return this.commonSpotifyCall(baseurl, accessToken);
     }
   }
 
