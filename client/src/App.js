@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import SignupFailed from './pages/Auth/SignupFailed';
-import Nav from "./components/Nav";
+import Navigation from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Artists from './pages/Artists';
@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       { loggedIn && (
         <div>
-          <Nav user={user} logout={logout}/>
+          <Navigation user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
               <ArtistsContext.Provider value={{artistInfoArray, setArtistInfoArray}}>
@@ -92,7 +92,7 @@ function App() {
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/Search" component={Search} />
                 <Route exact path="/artists" component={Artists} />
-                <Route exact path="/tracks" component={Tracks} />
+                <Route exact path="/home" component={Dashboard} />
                 <Route exact path="/newreleases" component={NewReleases} />
                 <Route exact path="/categories" component={BrowseCategories} />
               </PlaylistContext.Provider>
@@ -107,7 +107,6 @@ function App() {
       { !loggedIn && (
         <div className="auth-wrapper" style={{paddingTop:40}}>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
-          <Route exact path="/books" component={() => <LoginForm user={login} />} />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/signupfailed" component={SignupFailed} />
         </div>
