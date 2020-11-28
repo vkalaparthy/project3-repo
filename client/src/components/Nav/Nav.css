@@ -4,4 +4,18 @@
 
 .navbar {
   background-color: #bab2b5 !important;
+  padding-top: 2px !important;
+}
+
+.navHome {
+  font-size: 15px;
+}
+
+.navBrand {
+  font-size: 18px;
+  padding-bottom: 9px;
+}
+
+.navLogout {
+  font-size: 15px;
 }
