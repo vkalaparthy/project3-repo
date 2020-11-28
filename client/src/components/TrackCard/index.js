@@ -6,10 +6,18 @@ import AudioPlayer from 'react-h5-audio-player';
 const TrackCard = ({ songname, artistname, song, image, preview }) => {
   console.log(artistname);
   console.log(song);
+
   const handleAdd = () => {
+    console.log("In handleAdd");
+    console.log(` ****  ${songname}  ${artistname}  ${song} ${image}  ${preview}`)
     API.addSong ({songname, artistname, song, image, preview})
     .then (response => {
+      alert("Successfully added the song to playlist");
       console.log(response.data)
+    })
+    .catch(err => {
+      alert('Could not add song to the playlist');
+      console.log(err);
     });
   }
    return (
@@ -17,7 +25,7 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
       <div className="row no-gutters">
         
           <div className="col-md-4 d-flex justify-content-center">
-            <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Avatar" style={{ width: "100%", height: "auto"}} />
+            <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Avatar" style={{ width: "200px", height: "200px"}} />
           </div>
 
           <div className="col-md-8 d-flex justify-content-center">
