@@ -25,7 +25,7 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
       <div className="row no-gutters">
         
           <div className="col-md-4 d-flex justify-content-center">
-            <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Avatar" style={{ width: "200px", height: "200px"}} />
+            <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Avatar" style={{ width: "100%", height: "auto"}} />
           </div>
 
           <div className="col-md-8 d-flex justify-content-center">
