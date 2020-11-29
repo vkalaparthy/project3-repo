@@ -64,32 +64,11 @@ function Dashboard() {
       <Container>
 
         <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
-        
-        {/* <Row>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
-          </Col>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseNewReleases}>Browse New Releases</button></div>
-          </Col>
-          <Col size="md-4">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
-          </Col>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
-          </Col>
-        </Row> */}
 
         <Row className="playlistCard">
           <Col size="md-12">
-            <Card title="My Playlists">
+            <Card title="My Songs">
               { playlistArray.map((ele, i) =>
-<<<<<<< HEAD
-                <div className="p-2" key={i}> 
-                  <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
-                  <h5>
-<<<<<<< HEAD
-=======
                 <Row key={i}>
                   <Col size="md-3">
                     <h6>{ele.artistname}</h6>
@@ -100,31 +79,10 @@ function Dashboard() {
                     <a className="songLink" href={ele.url} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a>
                   </Col>
                   <Col size="md-3">
->>>>>>> 626422a00c293b9c14ca672159fdd2d907b1a5d2
                     {ele.preview && <AudioPlayer
                       src={ele.preview}
                       onPlay={e => console.log("onPlay")}
                     />}
-<<<<<<< HEAD
-                    {ele.title}
-=======
-                  {ele.preview && <AudioPlayer
-                    src={ele.preview}
-                    onPlay={e => console.log("onPlay")}
-                  />}
-                  {!ele.preview && <p className="blackBold">:( Sorry! There's no preview available!</p>}
-                    <a className="pr-1" ><i className="fa fa-play"></i></a> <span></span> 
-                    {ele.title} <span></span> 
->>>>>>> 256cf97734e5faab4e5288c49e65a2b19159bed6
-                    <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a>
-                  </h5> 
-
-                  <h6>
-                    <div className="pl-4">{ele.artistname}</div> 
-                  </h6>
-                  <hr></hr>
-                </div>
-=======
                     {!ele.preview && 
                       <p className="blackBold">{`:(`} Sorry! There's no preview available!</p>
                     }
@@ -137,7 +95,6 @@ function Dashboard() {
                     <hr></hr>
                   </Col>
                 </Row>
->>>>>>> 626422a00c293b9c14ca672159fdd2d907b1a5d2
               )}
             </Card>
           </Col>
@@ -147,4 +104,5 @@ function Dashboard() {
     );      
   }
   }
+
   export default Dashboard;

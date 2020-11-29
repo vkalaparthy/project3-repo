@@ -16,17 +16,13 @@ function NewRelease() {
   useEffect(() => {
     Spotify.browse({browseType: "newReleases"}).then(res => {
       setNewReleasesArray(res.albums.items);
-      // setRedirectTo('/newreleases');
     })
   }, []);
 
-  // if (!newReleasesArray.length) {
-  //   return <Redirect to='/' />
-  // } else {
     return (
       <Container>
         <Row>
-            <Col size="md-6">
+            <Col size="md-12">
               { newReleasesArray && newReleasesArray.map((item, i) => (
                 <NRCard
                   key={i}
@@ -38,19 +34,6 @@ function NewRelease() {
                   ext_link={item.external_urls.spotify}
                 />
               ))}
-            </Col>
-            <Col size="md-6">
-              { tracksInfoArray && tracksInfoArray.map((track, i) => (
-                <TrackCard
-                  key={i}
-                  songname={track.name}
-                  artistname={track.artists[0].name}
-                  song={track.external_urls.spotify}
-                  image={albumImage}
-                  preview={track.preview_url}
-                />
-              ))
-              }
             </Col>
           </Row>
       </Container>
