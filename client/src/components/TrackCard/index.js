@@ -21,7 +21,7 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
     });
   }
    return (
-    <div className="card mb-3 p-2">
+    <div className="card mt-2 mb-2 p-2">
       <div className="row no-gutters">
         
           <div className="col-md-4 d-flex justify-content-center">
