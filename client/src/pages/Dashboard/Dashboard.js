@@ -9,6 +9,7 @@ import { Card } from "../../components/Card";
 import Spotify from "../../utils/Spotify";
 
 import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 import API from "../../utils/API";
 
 function Dashboard() {
@@ -25,7 +26,11 @@ function Dashboard() {
     });
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (event) => {
+    event.preventDefault();
+    setPlaylistArray([]);
+    let id = event.target.getAttribute("data-id")
+    console.log(id);
     API.deleteSong(id);
     API.getSongs().then(res => {
       setPlaylistArray(res.data);
@@ -60,30 +65,47 @@ function Dashboard() {
 
         <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
         
-        <Row>
-          <Col size="md-4">
+        {/* <Row>
+          <Col size="md-6">
+            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
+          </Col>
+          <Col size="md-6">
             <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseNewReleases}>Browse New Releases</button></div>
           </Col>
           <Col size="md-4">
             <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
           </Col>
-          <Col size="md-4">
+          <Col size="md-6">
             <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
           </Col>
-        </Row>
+        </Row> */}
 
         <Row className="playlistCard">
           <Col size="md-12">
             <Card title="My Playlists">
               { playlistArray.map((ele, i) =>
+<<<<<<< HEAD
                 <div className="p-2" key={i}> 
                   <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
                   <h5>
 <<<<<<< HEAD
+=======
+                <Row key={i}>
+                  <Col size="md-3">
+                    <h6>{ele.artistname}</h6>
+                    <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
+                  </Col>
+                  <Col size="md-4">
+                    <h4>{ele.title}</h4>
+                    <a className="songLink" href={ele.url} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a>
+                  </Col>
+                  <Col size="md-3">
+>>>>>>> 626422a00c293b9c14ca672159fdd2d907b1a5d2
                     {ele.preview && <AudioPlayer
                       src={ele.preview}
                       onPlay={e => console.log("onPlay")}
                     />}
+<<<<<<< HEAD
                     {ele.title}
 =======
                   {ele.preview && <AudioPlayer
@@ -102,6 +124,20 @@ function Dashboard() {
                   </h6>
                   <hr></hr>
                 </div>
+=======
+                    {!ele.preview && 
+                      <p className="blackBold">{`:(`} Sorry! There's no preview available!</p>
+                    }
+                  </Col>
+                  <Col size="md-2">
+                    {/* <a className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" onClick={() => handleDelete(ele._id)}></i></a> */}
+                    <span className="pr-4" style={{ float: "right"}}><i className="fa fa-trash" data-id={ele._id} onClick={(event) => handleDelete(event)}></i></span>
+                  </Col>
+                  <Col size="md-12">
+                    <hr></hr>
+                  </Col>
+                </Row>
+>>>>>>> 626422a00c293b9c14ca672159fdd2d907b1a5d2
               )}
             </Card>
           </Col>

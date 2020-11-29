@@ -70,11 +70,15 @@ const Spotify = {
     
     if(accessToken) {
       let baseurl;
-      let browseType = searchObj.browseType;
+      console.log(searchObj.browseType);
+      console.log(searchObj.artistId);
       
-      if (browseType === 'newReleases') {
+      if (searchObj.browseType === 'newReleases') {
         baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
-      } 
+      } else if (searchObj.artistId) {
+        baseurl= `https://api.spotify.com/v1/albums/${searchObj.artistId}/tracks?market=US`;
+
+      }
       // else {
       //   baseurl = `https://api.spotify.com/v1/browse/categories`;
       // }
