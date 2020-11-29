@@ -28,7 +28,7 @@ const NewReleaseCard = ({ name, artists, releaseDate, image, id, ext_link }) => 
     <div className="card mb-3 p-2">
       <div className="row no-gutters">
         <div className="col-md-4 p-2 d-flex justify-content-center">
-          <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Album" style={{ width: "100%", height: "auto"}} />
+          <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Album" style={{ width: "200px", height: "200px"}} />
         </div>
 
         <div className="col-md-8">
