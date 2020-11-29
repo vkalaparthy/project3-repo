@@ -64,25 +64,10 @@ function Dashboard() {
       <Container>
 
         <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
-        
-        {/* <Row>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
-          </Col>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseNewReleases}>Browse New Releases</button></div>
-          </Col>
-          <Col size="md-4">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={browseCategories}>Browse Categories</button></div>
-          </Col>
-          <Col size="md-6">
-            <div className="mt-5 d-flex justify-content-center"><button className="btn" onClick={handleSearch}>Search</button></div>
-          </Col>
-        </Row> */}
 
         <Row className="playlistCard">
           <Col size="md-12">
-            <Card title="My Playlists">
+            <Card title="My Songs">
               { playlistArray.map((ele, i) =>
                 <Row key={i}>
                   <Col size="md-3">
@@ -119,4 +104,5 @@ function Dashboard() {
     );      
   }
   }
+
   export default Dashboard;
