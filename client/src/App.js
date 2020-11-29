@@ -6,15 +6,15 @@ import SignupFailed from './pages/Auth/SignupFailed';
 import Navigation from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
-import Artists from './pages/Artists';
-import Tracks from './pages/Tracks';
+import Artists from './pages/Artists'; // Not needed, need to remove
+import Tracks from './pages/Tracks';  // Not needed, need to remove
 import NewReleases from './pages/NewReleases';
 import BrowseCategories from './pages/BrowseCategories';
 
 import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
 import { TracksContext } from '../../client/src/utils/TracksContext';
 import { NewReleasesContext } from './utils/NewReleasesContext';
-import { BrowseCategContext } from './utils/BrowseCategContext';
+import { AlbumContext } from './utils/AlbumContext';
 import { PlaylistContext } from './utils/PlaylistContext';
 import AUTH from './utils/AUTH';
 import API from './utils/API';
@@ -27,6 +27,7 @@ function App() {
   const [newReleasesArray, setNewReleasesArray] = useState([]);
   const [browseCategArray, setBrowseCategArray] = useState([]);
   const [playlistArray, setPlaylistArray] = useState([]);
+  const [albumImage, setAlbumImage] = useState([]);
   
   useEffect(() => {
     AUTH.getUser().then(response => {
@@ -38,11 +39,11 @@ function App() {
           console.log(response.data.user._id);
           setLoggedIn(true);
           setUser(response.data.user);
-          API.getSongs().then(res => {
-            console.log("+++++++++++++++");
-            console.log(res.data);
-            setPlaylistArray(res.data);
-          })
+          // API.getSongs().then(res => {
+          //   console.log("+++++++++++++++");
+          //   console.log(res.data);
+          //   setPlaylistArray(res.data);
+          // })
         } else {
           setLoggedIn(false);
           setUser(null);
@@ -87,16 +88,16 @@ function App() {
               <ArtistsContext.Provider value={{artistInfoArray, setArtistInfoArray}}>
               <TracksContext.Provider value={{tracksInfoArray, setTracksInfoArray}}>
               <NewReleasesContext.Provider value={{newReleasesArray, setNewReleasesArray}}>
-              <BrowseCategContext.Provider value={{browseCategArray, setBrowseCategArray}}>
+              <AlbumContext.Provider value={{albumImage, setAlbumImage}}>
               <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/Search" component={Search} />
                 <Route exact path="/artists" component={Artists} />
-                <Route exact path="/home" component={Dashboard} />
+                {/* <Route exact path="/home" component={Dashboard} /> */}
                 <Route exact path="/newreleases" component={NewReleases} />
                 <Route exact path="/categories" component={BrowseCategories} />
               </PlaylistContext.Provider>
-              </BrowseCategContext.Provider>
+              </AlbumContext.Provider>
               </NewReleasesContext.Provider>
               </TracksContext.Provider>
               </ArtistsContext.Provider>
