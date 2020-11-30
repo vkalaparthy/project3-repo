@@ -31,7 +31,7 @@ In addition to being deployed on Heroku, here is a GIF showing the app's full fu
 
 ![appGIF](public/assets/gif/appGIF.gif)
 
-## Contact Information
+## Contact Us
 * Jarrod Bataille
 
   * E-mail: jtbataille@gmail.com
