@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { NewReleasesContext } from "../../utils/NewReleasesContext";
 import { TracksContext } from "../../utils/TracksContext";
 import { AlbumContext } from "../../utils/AlbumContext";
-import { Redirect } from 'react-router-dom';
 import NRCard from "../../components/NewReleaseCard";
 import TrackCard from "../../components/TrackCard";
 import { Container, Row, Col } from '../../components/Grid';
@@ -22,7 +21,7 @@ function NewRelease() {
   return (
     <Container>
       <Row>
-          <Col size="md-6">
+          <Col size="md-5">
             { newReleasesArray && newReleasesArray.map((item, i) => (
               <NRCard
                 key={i}
@@ -35,7 +34,7 @@ function NewRelease() {
               />
             ))}
           </Col>
-          <Col size="md-6">
+          <Col size="md-7">
             { tracksInfoArray && tracksInfoArray.map((track, i) => (
               <TrackCard
                 key={i}
