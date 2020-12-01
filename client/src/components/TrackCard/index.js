@@ -33,12 +33,12 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
               <p className="blackBold">Title: {songname}</p>
               <p className="blackBold">Artist: {artistname}</p>
               <p className="playlist" >Add to Playlist<i onClick={handleAdd} className="fa fa-plus-square"></i></p>
+              <p className="song"><a className="songLink" href={song} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a></p>
               {preview && <AudioPlayer
                 src={preview}
                 onPlay={e => console.log("onPlay")}
               />}
               {!preview && <p className="blackBold">:( Sorry! There's no preview available!</p>}
-              <p className="song"><a className="songLink" href={song} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a></p>
             </div>
           </div>
         
