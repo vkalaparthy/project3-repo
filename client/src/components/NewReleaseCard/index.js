@@ -21,13 +21,13 @@ const NewReleaseCard = ({ name, artists, releaseDate, image, id, ext_link }) => 
    return (
     <div className="card mb-3 p-2">
       <div className="row no-gutters">
-        <div className="col-md-4 p-2 d-flex justify-content-center">
+        <div className="col-md-6 p-2 d-flex justify-content-center">
           <img src={image || "https://via.placeholder.com/200x200.png?text=No+Image!"} alt="Album" style={{ width: "100%", height: "auto"}} />
         </div>
 
-        <div className="col-md-8">
+        <div className="col-md-6">
           <div className="card-body">
-            <h1 className="blackBold">{name}</h1>
+            <p className="blackBold">{name}</p>
             <span className="blackBold">Artists: </span>
             {artists.map((artist, i) =>  
               <p className="blackBold mr-4" key={i} >{artist.name}</p>
