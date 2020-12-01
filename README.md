@@ -64,10 +64,10 @@ After creating an account and logging into Music App, the user will be able to a
 | Back End   | Front End            |
 | ---------- | -------------------- |
 | Node JS    | React-Bootstrap      |
-| HTML5      | React                |
-| Express.js | CSS                  |
+| Express.js | React                |
+| Mongoose   | CSS                  |
 | MongoDB    | HTML5                |
-| Mongoose   | JSX                  |
+|            | JSX                  |
 |            |                      |
 
 ## Application Demo
