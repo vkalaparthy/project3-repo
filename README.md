@@ -67,9 +67,7 @@ After creating an account and logging into Music App, the user will be able to a
 | HTML5      | React                |
 | Express.js | CSS                  |
 | MongoDB    | HTML5                |
-| Mongoose   | MongoDB              |
-| JSX        | Mongoose             |
-| Heroku     | JSX                  |
+| Mongoose   | JSX                  |
 |            |                      |
 
 ## Application Demo
