@@ -4,23 +4,17 @@ import API from "../../utils/API";
 import AudioPlayer from 'react-h5-audio-player';
 
 const TrackCard = ({ songname, artistname, song, image, preview }) => {
-  console.log(artistname);
-  console.log(song);
-
   const handleAdd = () => {
-    console.log("In handleAdd");
-    console.log(` ****  ${songname}  ${artistname}  ${song} ${image}  ${preview}`)
     API.addSong ({songname, artistname, song, image, preview})
     .then (response => {
       alert("Successfully added the song to playlist");
-      console.log(response.data)
     })
     .catch(err => {
       alert('Could not add song to the playlist');
-      console.log(err);
     });
   }
-   return (
+
+  return (
     <div className="card mt-2 mb-2 p-2">
       <div className="row no-gutters">
         
@@ -38,7 +32,9 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
                 src={preview}
                 onPlay={e => console.log("onPlay")}
               />}
+
               {!preview && <p className="blackBold">:( Sorry! There's no preview available!</p>}
+
             </div>
           </div>
         

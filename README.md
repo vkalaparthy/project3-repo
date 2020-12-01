@@ -87,7 +87,8 @@ In addition to being deployed on Heroku, here is a GIF showing the app's full fu
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Contact Information
+## Contact Us
+
 * Jarrod Bataille
 
   * E-mail: jtbataille@gmail.com
