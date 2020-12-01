@@ -58,7 +58,7 @@ function Dashboard() {
                       onPlay={e => console.log("onPlay")}
                     />}
                     {!ele.preview && 
-                      <p style={{ paddingTop: "15px"}} className="blackBold">{`:(`} Sorry! There's no preview available!</p>
+                      <p style={{ paddingTop: "15px"}} className="blackBold">😞 Sorry! There's no preview available!</p>
                     }
                   </Col>
                   <Col size="md-1">

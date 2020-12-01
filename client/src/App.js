@@ -6,9 +6,7 @@ import SignupFailed from './pages/Auth/SignupFailed';
 import Navigation from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
-import Artists from './pages/Artists';
 import NewReleases from './pages/NewReleases';
-import BrowseCategories from './pages/BrowseCategories';
 
 import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
 import { TracksContext } from '../../client/src/utils/TracksContext';
@@ -74,9 +72,7 @@ function App() {
               <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/Search" component={Search} />
-                <Route exact path="/artists" component={Artists} />
                 <Route exact path="/newreleases" component={NewReleases} />
-                <Route exact path="/categories" component={BrowseCategories} />
               </PlaylistContext.Provider>
               </AlbumContext.Provider>
               </NewReleasesContext.Provider>
