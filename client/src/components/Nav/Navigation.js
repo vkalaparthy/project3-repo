@@ -37,7 +37,7 @@ const Navigation = (props) => {
           &#119070; Search
         </Nav.Link>
         <Nav.Link href="/newreleases" className={location.pathname === "/newreleases" ? "nav-link active" : "nav-link"}>
-          &#119074; Browse New Releases
+          &#119074; New Releases
         </Nav.Link>
         </Nav>
         <Nav size="mr-sm-2">
