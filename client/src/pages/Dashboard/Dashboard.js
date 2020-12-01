@@ -48,7 +48,7 @@ function Dashboard() {
                     <h6>{ele.artistname}</h6>
                     <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
                   </Col>
-                  <Col size="md-2">
+                  <Col size="md-3">
                     <h4 style={{ paddingTop: "10px" }}>{ele.title}</h4>
                     <a className="songLink" href={ele.url} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a>
                   </Col>
@@ -61,7 +61,7 @@ function Dashboard() {
                       <p style={{ paddingTop: "15px"}} className="blackBold">{`:(`} Sorry! There's no preview available!</p>
                     }
                   </Col>
-                  <Col size="md-2">
+                  <Col size="md-1">
                     <span className="pr-4" style={{ float: "left", paddingTop: "15px"}}><i className="fa fa-trash fa-lg" data-id={ele._id} onClick={(event) => handleDelete(event)}></i></span>
                   </Col>
                   <Col size="md-12">
