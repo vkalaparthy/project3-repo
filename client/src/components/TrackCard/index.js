@@ -33,7 +33,6 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
                 onPlay={e => console.log("onPlay")}
               />}
               {!preview && <p className="blackBold">😞 Sorry! There's no preview available!</p>}
-              <p className="song spotifyLink"><a className="songLink" href={song} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a></p>
             </div>
           </div>
         
