@@ -71,7 +71,7 @@ function App() {
               <AlbumContext.Provider value={{albumImage, setAlbumImage}}>
               <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
                 <Route exact path="/" component={Dashboard} />
-                <Route exact path="/Search" component={Search} />
+                <Route exact path="/search" component={Search} />
                 <Route exact path="/newreleases" component={NewReleases} />
               </PlaylistContext.Provider>
               </AlbumContext.Provider>
