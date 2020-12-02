@@ -29,22 +29,12 @@ b.artistName {
   padding-bottom: 15px;
 }
 
-b.playlist {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
+.notification__item--awesome {
+  background-color: #9497A7 !important;
+  border-left: 0px !important;
+  font-weight: bold;
 }
 
-.playlist:hover {
-  color: #BAB2B5;
-}
-
-b.song {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
+p.song {
+  margin-top: 15px !important;
 }
