@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import "bootstrap/dist/css/bootstrap.css";
 import API from "../../utils/API";
 import AudioPlayer from 'react-h5-audio-player';
 import { store } from 'react-notifications-component';
@@ -7,7 +8,11 @@ import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
 const TrackCard = ({ songname, artistname, song, image, preview }) => {
+  console.log(artistname);
+  console.log(song);
   const handleAdd = () => {
+    console.log("In handleAdd");
+    console.log(` ****  ${songname}  ${artistname}  ${song} ${image}  ${preview}`)
     API.addSong ({songname, artistname, song, image, preview})
     .then (response => {
       store.addNotification({      
@@ -31,8 +36,7 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
       })
     });
   }
-
-  return (
+   return (
     <div className="card mt-2 mb-2 p-2">
       <div className="row no-gutters">
         
