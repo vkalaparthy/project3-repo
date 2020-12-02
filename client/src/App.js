@@ -55,13 +55,13 @@ function App() {
         if (response.status === 200) {
           setLoggedIn(true);
           setUser(response.data.user);
+          setUser(null);
           setPlaylistArray(response.data.user.playlist);
         }
-      })
-      .catch(err => {
-        setLoggedIn(false);
-        console.log("Could not login " + err);
       });
+      // .catch(err => {
+      //   console.log("Could not login " + err);
+      // });
     };
 
   return (
