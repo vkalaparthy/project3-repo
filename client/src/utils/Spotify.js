@@ -1,17 +1,14 @@
 import axios from "axios";
-// import { useEffect } from 'react';
 import qs from 'querystring';
-
-// let accessToken;
 
 const Spotify = {
 
   getAccessToken() {
-    const clientId = '';
-    const clientSecret = '';
-    const token = btoa(`${clientId}:${clientSecret}`)
+    const clientId = process.env.REACT_APP_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+
+    const token = btoa(`${clientId}:${clientSecret}`);
     const body = qs.stringify({ grant_type: 'client_credentials' });
-    console.log(token);
     
     return axios.post(
       'https://accounts.spotify.com/api/token',
@@ -22,70 +19,53 @@ const Spotify = {
       },
       },
     ).then(res => {
-      console.log(res.data['access_token']);
       return res.data['access_token'] })
   },
 
-  async search() {
-    const accessToken = await Spotify.getAccessToken();
-    console.log("accesstoken: " + accessToken);
-    if(accessToken) {
-      // const baseurl = 'https://api.spotify.com/v1/search?query=thriller&type=track&offset=0&limit=20';
-      // let baseurl = 'https://api.spotify.com/v1/search?q=year%3A2001&type=artist&market=US';
-      let baseurl = 'https://api.spotify.com/v1/search?type=artist&q=Elvis&limit=5';
-      // return fetch(`https://api.spotify.com/v1/search?type=artist&q=Elvis`, {
-      return axios.get(baseurl, {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${accessToken}`
-        }
-      }).then(response => {
-        console.log("*************");
-        console.log(response.data);
-        return response.data;
-      })
-    }
-  
-    // .then(jsonResponse => {
-    //   // if (!jsonResponse.tracks) {
-    //   //   return [];
-    //   // }
-    //   return jsonResponse.artists.items.map(item => ({
-    //     id: item.id,
-    //     name: item.name,
-    //     artist: item.artists[0].name,
-    //     album: item.album.name,
-    //     uri: item.uri
-    //   }));
-    // });
-
+  async commonSpotifyCall(baseUrl, accessToken) {
+    const response = await axios.get(baseUrl, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+    return response.data;
   },
 
-  savePlaylist(name, trackUris) {
-    if (!name || !trackUris.length) {
-      return;
+  async search(searchObj) {
+    const accessToken = await Spotify.getAccessToken();
+    
+    if(accessToken) {
+      const baseurl = `https://api.spotify.com/v1/search?q=${searchObj.query}&type=${searchObj.type}`;
+
+      return this.commonSpotifyCall(baseurl, accessToken);
     }
-    const accessToken = Spotify.getAccessToken();
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    let userId;
-    return axios.post('https://api.spotify.com/v1/me', {headers: headers}
-    ).then(response => response.json()
-    ).then(jsonResponse => {
-      userId = jsonResponse.id;
-      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-        headers: headers,
-        method: 'POST',
-        body: JSON.stringify({name: name})
-      }).then(response => response.json()
-      ).then(jsonResponse => {
-        const playlistId = jsonResponse.id;
-        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-          headers: headers,
-          method: 'POST',
-          body: JSON.stringify({uris: trackUris})
-        });
-      });
-    });
+  },
+
+  async topSongs(searchObj) {
+    const value = searchObj.artistId;
+    const accessToken = await Spotify.getAccessToken();
+    if(accessToken) {
+      let baseurl = `https://api.spotify.com/v1/artists/${value}/top-tracks?market=US`;
+    
+      return this.commonSpotifyCall(baseurl, accessToken);
+    }
+  },
+
+  async browse(searchObj) {
+    const accessToken = await Spotify.getAccessToken();
+    
+    if(accessToken) {
+      let baseurl;
+      
+      if (searchObj.browseType === 'newReleases') {
+        baseurl = `https://api.spotify.com/v1/browse/new-releases?country=US`;
+      } else if (searchObj.artistId) {
+        baseurl= `https://api.spotify.com/v1/albums/${searchObj.artistId}/tracks?market=US`;
+
+      }
+      return this.commonSpotifyCall(baseurl, accessToken);
+    }
   }
 };
 

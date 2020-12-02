@@ -1,0 +1,14 @@
+/* STYLING FOR NEW RELEASE CARDS */
+
+.blackBold {
+  color: black;
+  font-weight: bold;
+}
+
+.songBtn {
+  padding: 10px 25px 10px 25px !important;
+}
+
+.spotifyLink {
+  margin-top: 15px !important;
+}

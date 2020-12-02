@@ -4,4 +4,31 @@
 
 .navbar {
   background-color: #bab2b5 !important;
+  padding-top: 2px !important;
+}
+
+.navHome {
+  font-size: 15px;
+}
+
+.navBrand {
+  font-size: 18px;
+  /* padding-bottom: 9px; */
+  /* padding: 15px; */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: App-logo-spin infinite 10s ease-in;
+}
+
+.navLogout {
+  font-size: 15px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+  0%   {background-color:#EDC7B7; }
+  50%  {background-color:#BAB2B5; }
+  75% {background-color: white; }
 }

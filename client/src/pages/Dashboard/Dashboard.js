@@ -1,40 +1,81 @@
-import React, { useState } from "react";
-import ArtistCard from "../../components/ArtistCard";
+import React, { useContext, useState, useEffect } from "react";
+import { Redirect } from 'react-router-dom';
+import { PlaylistContext } from "../../utils/PlaylistContext";
 import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
-import Spotify from "../../utils/Spotify";
+import { Card } from "../../components/Card";
+
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import API from "../../utils/API";
 
 function Dashboard() {
-  const [artistInfoArray, setArtistInfoArray]  = useState([]);
+  const { playlistArray, setPlaylistArray } = useContext(PlaylistContext);
+  
+  const [redirectTo, setRedirectTo] = useState(null);
 
-  function getInfoFromSpotify(event) {
+  useEffect(() => {
+    API.getSongs().then(res => {
+      setPlaylistArray(res.data);
+    });
+  }, []);
+
+  const handleDelete = (event) => {
     event.preventDefault();
-    console.log("Button clicked *********** ");
-    Spotify.search()
-      .then(res => {
-        console.log(res.artists.items);
-        setArtistInfoArray(res.artists.items)
-      })
-      .catch(err => console.log(err));
+    setPlaylistArray([]);
+    let id = event.target.getAttribute("data-id")
+    console.log(id);
+    API.deleteSong(id);
+    API.getSongs().then(res => {
+      setPlaylistArray(res.data);
+    });
   };
+
+
+  if (redirectTo) {
+    return <Redirect to={{ pathname: redirectTo }} />
+  } else {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12 sm-12"> 
-          <Jumbotron>
-              <h1> Trying Spotify API </h1>
-              <button type="button" onClick={getInfoFromSpotify}> Click Here for Elvis </button>
-            </Jumbotron>
+      <Container>
+
+        <Row><Col size="md-12"><h1 className="text-center justify-content-center">Welcome back!</h1></Col></Row>
+
+        <Row className="playlistCard">
+          <Col size="md-12">
+            <Card title="My Songs">
+              { playlistArray.map((ele, i) =>
+                <Row key={i}>
+                  <Col size="md-3">
+                    <h6>{ele.artistname}</h6>
+                    <img src={ele.image} alt="song_cover" style={{ width: "100px", height: "auto"}}></img>
+                  </Col>
+                  <Col size="md-3">
+                    <h4 style={{ paddingTop: "10px" }}>{ele.title}</h4>
+                    <a className="songLink" href={ele.url} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a>
+                  </Col>
+                  <Col size="md-5">
+                    {ele.preview && <AudioPlayer
+                      src={ele.preview}
+                      onPlay={e => console.log("onPlay")}
+                    />}
+                    {!ele.preview && 
+                      <p style={{ paddingTop: "15px"}} className="blackBold">😞 Sorry! There's no preview available!</p>
+                    }
+                  </Col>
+                  <Col size="md-1">
+                    <span className="pr-4" style={{ float: "left", paddingTop: "15px"}}><i className="fa fa-trash fa-lg" data-id={ele._id} onClick={(event) => handleDelete(event)}></i></span>
+                  </Col>
+                  <Col size="md-12">
+                    <hr></hr>
+                  </Col>
+                </Row>
+              )}
+            </Card>
           </Col>
         </Row>
-        { artistInfoArray && artistInfoArray.map((artist, i) => (
-          <ArtistCard
-            key={i}
-            image={artist.images.length && artist.images[0].url}
-            artist={artist.name}
-          />
-        ))}
+        
       </Container>
-    );
+    );      
   }
+  }
+
   export default Dashboard;

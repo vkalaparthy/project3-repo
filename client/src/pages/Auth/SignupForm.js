@@ -25,22 +25,28 @@ function SignupForm() {
   
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// TODO - validate!
-		AUTH.signup({
-      firstName: userObject.firstName,
-      lastName: userObject.lastName,
-      username: userObject.username,
-      password: userObject.password
-    }).then(response => {
-      // console.log(response);
-      if (!response.data.errmsg) {
-        setRedirectTo('/');
-      } else {
-        console.log("redirecting to signup failed");
-        setRedirectTo('/Signupfailed');
-        // console.log('duplicate');
-      }
-    });
+    // validate!
+    if (userObject.firstName.trim() && userObject.lastName.trim()
+        && userObject.username && userObject.password) {
+          // console.log("Everything is fine, proceed");
+          AUTH.signup({
+            firstName: userObject.firstName.trim(),
+            lastName: userObject.lastName.trim(),
+            username: userObject.username.trim(),
+            password: userObject.password.trim()
+          }).then(response => {
+            // console.log(response);
+            if (!response.data.error) {
+              setRedirectTo('/');
+            } else {
+              console.log("redirecting to signup failed");
+              setRedirectTo('/signupfailed');
+              // console.log('duplicate');
+            }
+          });
+    } else {
+      alert("Some information is missing");
+    }
   };
   
   if (redirectTo) {
