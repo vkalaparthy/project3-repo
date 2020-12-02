@@ -17,7 +17,7 @@ jamEZ is an application that allows users to browse artists and songs, add songs
 
 ## Installation
 
-This application is deployed on [Heroku](#) for any curious users who would like to listen to some music!
+This application is deployed on [Heroku](https://jamez.herokuapp.com/) for any curious users who would like to jam out in their free time, during the daily grind, or whenever else they feel so inclined!
 
 ## Features
 
@@ -68,7 +68,7 @@ After creating an account and logging into jamEZ, the user will be able to acces
 | Mongoose   | CSS                  |
 | MongoDB    | HTML5                |
 |            | JSX                  |
-|            |                      |
+|            | React-H5-Audio-Player|
 
 ## Application Demo
 After following the information in the [Installation](#installation) section users will be greated with an opening page that looks like this:
