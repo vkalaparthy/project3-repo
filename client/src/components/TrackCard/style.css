@@ -41,10 +41,18 @@ b.playlist {
   color: #BAB2B5;
 }
 
-b.song {
-  color: white;
+p.song {
+  /* color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 20px; */
+  margin-top: 15px !important;
 }
+
+.notification__item--awesome {
+  background-color: #9497A7 !important;
+  border-left: 0px !important;
+  font-weight: bold;
+}
+

@@ -6,11 +6,13 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
+    "animate.css": "^4.1.1",
     "query-string": "^4.3.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
     "react-h5-audio-player": "^3.5.0",
+    "react-notifications-component": "^3.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0"
   },

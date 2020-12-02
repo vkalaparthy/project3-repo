@@ -7,6 +7,7 @@ import Navigation from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import NewReleases from './pages/NewReleases';
+import ReactNotifications from 'react-notifications-component';
 
 import { ArtistsContext } from '../../client/src/utils/ArtistsContext';
 import { TracksContext } from '../../client/src/utils/TracksContext';
@@ -64,6 +65,10 @@ function App() {
         <div>
           <Navigation user={user} logout={logout}/>
           <div className="main-view">
+            <ReactNotifications types={[{
+                htmlClasses: ['notification__item--awesome'],
+                name: 'awesome'
+              }]}/>
             <Switch>
               <ArtistsContext.Provider value={{artistInfoArray, setArtistInfoArray}}>
               <TracksContext.Provider value={{tracksInfoArray, setTracksInfoArray}}>
