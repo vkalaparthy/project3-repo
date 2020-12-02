@@ -19,8 +19,10 @@ function LoginForm({login}) {
 	};
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		login(userObject.username, userObject.password);
+    event.preventDefault();
+    if (userObject.username && userObject.password) {
+      login(userObject.username, userObject.password);
+    }
 		setRedirectTo('/');
 	};
 
