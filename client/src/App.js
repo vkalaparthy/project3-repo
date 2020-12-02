@@ -56,6 +56,10 @@ function App() {
           setUser(response.data.user);
           setPlaylistArray(response.data.user.playlist);
         }
+      })
+      .catch(err => {
+        setLoggedIn(false);
+        console.log("Could not login" + err);
       });
     };
   return (
