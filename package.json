@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.12",
+    "animate.css": "^4.1.1",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
@@ -40,6 +41,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.4.0",
-    "react-h5-audio-player": "^3.5.0"
+    "react-h5-audio-player": "^3.5.0",
+    "react-notifications-component": "^3.0.3"
   }
 }

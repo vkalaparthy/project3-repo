@@ -2,15 +2,33 @@ import React from "react";
 import "./style.css";
 import API from "../../utils/API";
 import AudioPlayer from 'react-h5-audio-player';
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 const TrackCard = ({ songname, artistname, song, image, preview }) => {
   const handleAdd = () => {
     API.addSong ({songname, artistname, song, image, preview})
     .then (response => {
-      alert("Successfully added the song to playlist");
+      store.addNotification({      
+        message: 'Song successfully added to the playlist!',
+        type: 'awesome',                         // 'default', 'success', 'info', 'warning'
+        container: 'top-right',                // where to position the notifications
+        animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+        animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+        dismiss: {duration: 3000}
+      })
     })
     .catch(err => {
-      alert('Could not add song to the playlist');
+      store.addNotification({     
+        title: "Error", 
+        message: 'Song could not be added to the playlist',
+        type: 'danger',                         // 'default', 'success', 'info', 'warning'
+        container: 'top-right',                // where to position the notifications
+        animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+        animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+        dismiss: {duration: 3000}
+      })
     });
   }
 
@@ -26,7 +44,7 @@ const TrackCard = ({ songname, artistname, song, image, preview }) => {
             <div className="card-body">
               <p className="blackBold">Title: {songname}</p>
               <p className="blackBold">Artist: {artistname}</p>
-              <p className="playlist" >Add to Playlist<i onClick={handleAdd} className="fa fa-plus-square"></i></p>
+              <button className="btn songBtn" onClick={handleAdd}>Add to playlist</button>
               <p className="song"><a className="songLink" href={song} target="_blank">Go to Spotify<i className="fa fa-headphones"></i></a></p>
               {preview && <AudioPlayer
                 src={preview}
