@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.css";
 import API from "../../utils/API";
