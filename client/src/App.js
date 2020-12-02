@@ -49,6 +49,7 @@ function App() {
             }
         });
     };
+
     const login = (username, password) => {
       AUTH.login(username, password).then(response => {
         if (response.status === 200) {
@@ -59,9 +60,10 @@ function App() {
       })
       .catch(err => {
         setLoggedIn(false);
-        console.log("Could not login" + err);
+        console.log("Could not login " + err);
       });
     };
+
   return (
     <div className="App">
       { loggedIn && (

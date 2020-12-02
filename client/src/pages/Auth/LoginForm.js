@@ -19,8 +19,13 @@ function LoginForm({login}) {
 	};
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		login(userObject.username, userObject.password);
+    event.preventDefault();
+    try {
+      login(userObject.username, userObject.password);
+    }
+		catch (error){
+      console.log("caught an eror");
+    }
 		setRedirectTo('/');
 	};
 
