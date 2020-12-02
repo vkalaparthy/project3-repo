@@ -49,6 +49,7 @@ function App() {
             }
         });
     };
+
     const login = (username, password) => {
       AUTH.login(username, password).then(response => {
         if (response.status === 200) {
@@ -56,8 +57,13 @@ function App() {
           setUser(response.data.user);
           setPlaylistArray(response.data.user.playlist);
         }
+      })
+      .catch(err => {
+        setLoggedIn(false);
+        console.log("Could not login " + err);
       });
     };
+
   return (
     <div className="App">
       { loggedIn && (

@@ -1,5 +1,5 @@
 {
-  "name": "reactreadinglist-auth-client",
+  "name": "reactmusicapp-auth-client",
   "version": "1.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,7 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
     "react-h5-audio-player": "^3.5.0",
-    "react-router-dom": "^5.2.0",    
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
     "react-notifications-component": "^3.0.3"
   },
