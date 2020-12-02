@@ -1,4 +1,4 @@
-# Music App
+# jamEZ
 
 ## Table of Contents
 * [Description](#description)
@@ -13,7 +13,7 @@
 
 ## Description
 
-Music App is an application that allows users to browse artists and songs, add songs to a list, preview songs, view songs on Spotify, and browse newly-released songs. After creating an account and once logged into the application, users will be able to perform all of the above activities.
+jamEZ is an application that allows users to browse artists and songs, add songs to a list, preview songs, view songs on Spotify, and browse newly-released songs. After creating an account and once logged into the application, users will be able to perform all of the above activities.
 
 ## Installation
 
@@ -31,7 +31,7 @@ This application is deployed on [Heroku](#) for any curious users who would like
 
 ## How to Use
 
-After creating an account and logging into Music App, the user will be able to access all of the application's functionality. The actions that users can perform are as follows:
+After creating an account and logging into jamEZ, the user will be able to access all of the application's functionality. The actions that users can perform are as follows:
 
 * Search for songs:
 
