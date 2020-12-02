@@ -3,13 +3,23 @@ mongoose.Promise = global.Promise;
 let MONGO_URL;
 const MONGO_LOCAL_URL = 'mongodb://localhost/music-app';
 
-if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-	MONGO_URL = process.env.MONGODB_URI;
-} else {
-	mongoose.connect(MONGO_LOCAL_URL, { useNewUrlParser: true });
-	MONGO_URL = MONGO_LOCAL_URL;
-}
+// if (process.env.MONGODB_URI) {
+	mongoose.connect(
+		process.env.MONGODB_URI || MONGO_LOCAL_URL,
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true,
+			useFindAndModify: false
+		}
+	);
+	
+// 	mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+// 	MONGO_URL = process.env.MONGODB_URI;
+// } else {
+// 	mongoose.connect(MONGO_LOCAL_URL, { useNewUrlParser: true });
+// 	MONGO_URL = MONGO_LOCAL_URL;
+// }
 
 const db = mongoose.connection;
 db.on('error', err => {
