@@ -5,8 +5,6 @@ import Spotify from "../../utils/Spotify";
 import "./style.css";
 
 const ArtistCard = ({ image, artistname, id, externallink, genre}) => {
-  // console.log( artistname, "is in the building");
-  // console.log(externallink);
   const { setTracksInfoArray } = useContext(TracksContext);
   const [redirectTo, setRedirectTo] = useState(null);
 
