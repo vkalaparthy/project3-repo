@@ -74,7 +74,7 @@ After creating an account and logging into jamEZ, the user will be able to acces
 |            |                      |
 
 ## Application Demo
-After following the information in the [Installation](#installation) section users will be greated with an opening page that looks like this:
+After following the information in the [Installation](#installation) section users will be greeted with an opening page that looks like this:
 
 <img src="client/public/assets/images/login.png" width="500"/>
 
@@ -82,7 +82,9 @@ After following the information in the [Installation](#installation) section use
 
 <img src="client/public/assets/images/welcome.png" width="500"/>
 
-In addition to being deployed on Heroku, here is a GIF showing the app's full functionality:
+------------------------------------------------------
+
+In addition to being deployed on Heroku, users can sign in, search and play their favorite music, and customize their dashboards
 
 <img src="client/public/assets/gifs/jamEZgif.gif" width="500"/>
 
