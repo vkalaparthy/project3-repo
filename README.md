@@ -1,5 +1,19 @@
 # jamEZ
 
+![GitHub license](https://img.shields.io/badge/Created%20By-%40vkalaparthy-blue)
+</br>
+
+![GitHub license](https://img.shields.io/badge/Created%20By-%40jtbataille-blue)
+</br>
+
+![GitHub license](https://img.shields.io/badge/Created%20By-%40masielb-blue) 
+</br>
+
+![GitHub license](https://img.shields.io/badge/Created%20By-%40CurranSMiller-blue)
+</br>
+
+![GitHub license](https://img.shields.io/badge/Created%20By-%40joneskm72-blue) 
+
 ## Table of Contents
 * [Description](#description)
 * [Installation](#installation)
@@ -54,7 +68,7 @@ After creating an account and logging into jamEZ, the user will be able to acces
 * Browse New Releases:
 
   * In the navigation bar is the option New Releases. Upon clicking on it, you will be able to view the top 20 new releases
-  * Each new release listing offers the option to view the songs on the album, as well as view the release on Spotify
+  * Each new release listing offers the option to view the songs on the album, add the each song to the My Songs box, as well as view the release on Spotify
 
 ## Technologies Used
 </br>
@@ -67,21 +81,22 @@ After creating an account and logging into jamEZ, the user will be able to acces
 | Express.js | React                |
 | Mongoose   | CSS                  |
 | MongoDB    | HTML5                |
-|            | JSX                  |
+| Spotify API| JSX                  |
 |            | React-H5-Audio-Player|
+|            |                      |
 
 ## Application Demo
 After following the information in the [Installation](#installation) section users will be greated with an opening page that looks like this:
 
-![startPage](public/assets/img/startPage.png)
+![startPage](public/assets/images/login.png)
 
 ------------------------------------------------------
 
-![nextImg](public/assets/img/nextImg.png)
+![nextImg](public/assets/images/welcome.png)
 
 In addition to being deployed on Heroku, here is a GIF showing the app's full functionality:
 
-![appGIF](public/assets/gif/appGIF.gif)
+![appGIF](public/assets/gifs/jamEZgif.gif)
 
 ## License
 
