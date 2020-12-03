@@ -1,18 +1,7 @@
 # jamEZ
 
-![GitHub license](https://img.shields.io/badge/Created%20By-%40vkalaparthy-blue)
+<img src="client/public/assets/images/guitar.png" width="150"/>
 </br>
-
-![GitHub license](https://img.shields.io/badge/Created%20By-%40jtbataille-blue)
-</br>
-
-![GitHub license](https://img.shields.io/badge/Created%20By-%40masielb-blue) 
-</br>
-
-![GitHub license](https://img.shields.io/badge/Created%20By-%40CurranSMiller-blue)
-</br>
-
-![GitHub license](https://img.shields.io/badge/Created%20By-%40joneskm72-blue) 
 
 ## Table of Contents
 * [Description](#description)
