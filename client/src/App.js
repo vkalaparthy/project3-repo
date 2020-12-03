@@ -55,7 +55,6 @@ function App() {
         if (response.status === 200) {
           setLoggedIn(true);
           setUser(response.data.user);
-          setUser(null);
           setPlaylistArray(response.data.user.playlist);
         }
       });
