@@ -1,7 +1,6 @@
 # jamEZ
 
 <img src="client/public/assets/images/guitar.png" width="150"/>
-</br>
 
 ## Table of Contents
 * [Description](#description)
@@ -57,7 +56,7 @@ After creating an account and logging into jamEZ, the user will be able to acces
 * Browse New Releases:
 
   * In the navigation bar is the option New Releases. Upon clicking on it, you will be able to view the top 20 new releases
-  * Each new release listing offers the option to view the songs on the album, add the each song to the My Songs box, as well as view the release on Spotify
+  * Each new release listing offers the option to view the songs on the album, add each song to the My Songs box, as well as view the release on Spotify
 
 ## Technologies Used
 </br>
