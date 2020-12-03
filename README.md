@@ -88,15 +88,15 @@ After creating an account and logging into jamEZ, the user will be able to acces
 ## Application Demo
 After following the information in the [Installation](#installation) section users will be greated with an opening page that looks like this:
 
-![startPage](public/assets/images/login.png)
+<img src="client/public/assets/images/login.png" width="500"/>
 
 ------------------------------------------------------
 
-![nextImg](public/assets/images/welcome.png)
+<img src="client/public/assets/images/welcome.png" width="500"/>
 
 In addition to being deployed on Heroku, here is a GIF showing the app's full functionality:
 
-![appGIF](public/assets/gifs/jamEZgif.gif)
+<img src="client/public/assets/gifs/jamEZgif.gif" width="500"/>
 
 ## License
 
