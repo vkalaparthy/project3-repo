@@ -40,14 +40,12 @@ function App() {
     };
   }, []);
     const logout = (event) => {
-    event.preventDefault();
-    
-        AUTH.logout().then(response => {
-            if (response.status === 200) {
-              setLoggedIn(false);
-              setUser(null);
-            }
-        });
+      AUTH.logout().then(response => {
+          if (response.status === 200) {
+            setLoggedIn(false);
+            setUser(null);
+          }
+      });
     };
 
     const login = (username, password) => {
@@ -58,9 +56,6 @@ function App() {
           setPlaylistArray(response.data.user.playlist);
         }
       });
-      // .catch(err => {
-      //   console.log("Could not login " + err);
-      // });
     };
 
   return (
@@ -79,7 +74,7 @@ function App() {
               <NewReleasesContext.Provider value={{newReleasesArray, setNewReleasesArray}}>
               <AlbumContext.Provider value={{albumImage, setAlbumImage}}>
               <PlaylistContext.Provider value={{playlistArray, setPlaylistArray}}>
-                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/home" component={Dashboard} />
                 <Route exact path="/search" component={Search} />
                 <Route exact path="/newreleases" component={NewReleases} />
               </PlaylistContext.Provider>

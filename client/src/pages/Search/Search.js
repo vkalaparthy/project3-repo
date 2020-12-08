@@ -24,13 +24,9 @@ function Search() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("Form submit!!!!");
     // empty the content of Both artistArray and Tracks Array
     setArtistInfoArray([]);
     setTracksInfoArray([]);
-    console.log(searchObject);
-    console.log(event.target.value);  
-    console.log(searchObject);
     Spotify.search(searchObject).then(res => {
       if (searchObject.type === "artist") {
         if (!res.artists.items.length) {
@@ -72,7 +68,6 @@ function Search() {
       ...searchObject,
 			[event.target.name]: event.target.value
     });
-    console.log(event.target.name + ": " + event.target.value);
   };
 
   return (
@@ -105,28 +100,29 @@ function Search() {
         </Col>
 
         <Col size="md-7">
-          { tracksInfoArray && tracksInfoArray.map((track, i) => (
-            <TrackCard
-              key={i}
-              songname={track.name}
-              artistname={track.artists[0].name}
-              song={track.external_urls.spotify}
-              image={track.album.images[0].url}
-              preview={track.preview_url}
-            />
-          ))
-          }
-          { artistInfoArray && artistInfoArray.map((artist, i) => (
-            <ArtistCard
-              key={i}
-              image={artist.images.length && artist.images[0].url}
-              artistname={artist.name}
-              id={artist.id}
-              externallink={artist.external_urls.spotify}
-              genre={artist.genres}
-            />
-          ))
-          }
+          { (tracksInfoArray.length) ?
+            ( tracksInfoArray.map((track, i) => (
+              <TrackCard
+                key={i}
+                songname={track.name}
+                artistname={track.artists[0].name}
+                song={track.external_urls.spotify}
+                image={track.album.images[0].url}
+                preview={track.preview_url}
+              />
+            ))
+          ) :
+            ( artistInfoArray && artistInfoArray.map((artist, i) => (
+              <ArtistCard
+                key={i}
+                image={artist.images.length && artist.images[0].url}
+                artistname={artist.name}
+                id={artist.id}
+                externallink={artist.external_urls.spotify}
+                genre={artist.genres}
+              />
+            ))
+          )}
         </Col>       
       </Row>
     </Container>
