@@ -30,7 +30,7 @@ const Navigation = (props) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav activeKey={window.location.pathname} className="mr-auto navLinks">
-        <Nav.Link href="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        <Nav.Link href="/home" className={location.pathname === "/home" ? "nav-link active" : "nav-link"}>
           &#119136; Home
         </Nav.Link>
         <Nav.Link href="/search" className={location.pathname === "/search" ? "nav-link active" : "nav-link"}>

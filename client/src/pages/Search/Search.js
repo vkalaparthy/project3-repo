@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { store } from 'react-notifications-component';
+import 'animate.css';
 import { ArtistsContext } from "../../utils/ArtistsContext";
 import { TracksContext } from "../../utils/TracksContext";
 import { Col, Row, Container } from "../../components/Grid";
@@ -31,13 +33,35 @@ function Search() {
     console.log(searchObject);
     Spotify.search(searchObject).then(res => {
       if (searchObject.type === "artist") {
-        console.log(res.artists.items);
+        if (!res.artists.items.length) {
+          store.addNotification({     
+            title: "Oops!", 
+            message: `There is no artist by the name "${searchObject.query}"!`,
+            type: 'danger',                         // 'default', 'success', 'info', 'warning'
+            container: 'top-center',                // where to position the notifications
+            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+            dismiss: {duration: 3000}
+          })    
+        }
         setArtistInfoArray(res.artists.items);
         //setRedirectTo('/artists');
       } else  {
         // This is for tracks
         setTracksInfoArray(res.tracks.items);
         //setRedirectTo('/tracks');
+        if (!res.tracks.items.length) {
+          store.addNotification({     
+            title: "Oops!", 
+            message: `There are no tracks with the title "${searchObject.query}"!`,
+            type: 'danger',                         // 'default', 'success', 'info', 'warning'
+            container: 'top-center',                // where to position the notifications
+            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+            dismiss: {duration: 3000}
+          })    
+        }
+
       }
     })
     .catch(err => console.log(err));
