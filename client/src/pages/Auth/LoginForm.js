@@ -22,7 +22,7 @@ function LoginForm({login}) {
     event.preventDefault();
     if (userObject.username && userObject.password) {
       login(userObject.username, userObject.password);
-      setRedirectTo('/');
+      setRedirectTo('/home');
     }
 	};
 
