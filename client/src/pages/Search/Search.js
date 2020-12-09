@@ -54,7 +54,7 @@ function Search() {
           store.addNotification({     
             title: "Oops!", 
             message: `There are no tracks with the title "${searchObject.query}"!`,
-            type: 'danger',                         // 'default', 'success', 'info', 'warning'
+            type: 'awesome',                         // 'default', 'success', 'info', 'warning'
             container: 'top-center',                // where to position the notifications
             animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
             animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
